@@ -46,9 +46,9 @@ test("renders every independent company page", async () => {
     }
     if (pathname === "/") {
       assert.match(html, /aria-label="Language selector"/i);
-      assert.match(html, /臺中市大甲區義和里重義一路151號/);
+      assert.match(html, /台中市大甲區重義一路151號/);
       assert.match(html, /04-26763117/);
-      assert.match(html, /temp@mail.com/);
+      assert.match(html, /chunguen851996@gmail\.com/);
       assert.equal((html.match(/class="home-value-icon"/g) ?? []).length, 0);
       assert.doesNotMatch(html, /核心經營理念/);
       assert.match(html, /加工服務/);
@@ -82,8 +82,10 @@ test("renders every independent company page", async () => {
       assert.match(html, /顯示較晚的沿革/);
     }
     if (pathname === "/cases") {
-      assert.match(html, /product-case-01\.png/);
-      assert.match(html, /case-placeholder-image/);
+      assert.match(html, /PRODUCT RANGE \/ 13/i);
+      assert.match(html, /product-01\.png/);
+      assert.match(html, /product-13\.png/);
+      assert.equal((html.match(/class="product-card"/g) ?? []).length, 13);
     }
   }
 });

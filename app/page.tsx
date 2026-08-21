@@ -74,7 +74,7 @@ export const copy: Record<Lang, Record<string, string>> = {
     footerDescription: "專注精密研磨，提供穩定可靠的精密零件加工服務。",
     footerQuickLinks: "快速導覽",
     footerContact: "聯絡長芸",
-    footerAddress: "臺中市大甲區義和里重義一路151號",
+    footerAddress: "台中市大甲區重義一路151號",
     nextEyebrow: "PRECISION IN EVERY STEP",
     nextTitle: "從圖面到成品，讓每一次交付都值得信賴。",
     nextLink: "查看加工服務",
@@ -543,7 +543,7 @@ function HomeHeader({ lang, setLang }: { lang: Lang; setLang: (lang: Lang) => vo
 
 function HomeFooter({ lang }: { lang: Lang }) {
   const c = copy[lang];
-  return <><ContactCta lang={lang} /><footer className="site-footer"><div className="container footer-main"><div className="footer-company"><h2 className="footer-company-title">長芸有限公司</h2><p>{c.footerDescription}</p></div><div className="footer-contact-section"><h6 className="title"><a href="/contact">{c.footerContact}</a></h6><p><a href="tel:0426763118"><FontAwesomeIcon className="footer-contact-icon" icon={faPhone} aria-hidden="true" />04-26763118</a></p><p><FontAwesomeIcon className="footer-contact-icon" icon={faFax} aria-hidden="true" />04-26763117</p></div><div className="footer-contact footer-address-section"><p><a href="mailto:temp@mail.com"><FontAwesomeIcon className="footer-contact-icon" icon={faEnvelope} aria-hidden="true" />temp@mail.com</a></p><p className="address-indent"><FontAwesomeIcon className="footer-contact-icon" icon={faLocationDot} aria-hidden="true" /><span>{c.footerAddress}</span></p></div></div><div className="container footer-bottom"><span>© 2026 CHUNG UEN CO., LTD.</span><span>PRECISION GRINDING / TURNING / INSPECTION</span></div></footer></>;
+  return <><ContactCta lang={lang} /><footer className="site-footer"><div className="container footer-main"><div className="footer-company"><h2 className="footer-company-title">長芸有限公司</h2><p>{c.footerDescription}</p></div><div className="footer-contact-section"><h6 className="title"><a href="/contact">{c.footerContact}</a></h6><p><a href="tel:0426763118"><FontAwesomeIcon className="footer-contact-icon" icon={faPhone} aria-hidden="true" />04-26763118</a></p><p><FontAwesomeIcon className="footer-contact-icon" icon={faFax} aria-hidden="true" />04-26763117</p></div><div className="footer-contact footer-address-section"><p><a href="mailto:chunguen851996@gmail.com"><FontAwesomeIcon className="footer-contact-icon" icon={faEnvelope} aria-hidden="true" />chunguen851996@gmail.com</a></p><p className="address-indent"><FontAwesomeIcon className="footer-contact-icon" icon={faLocationDot} aria-hidden="true" /><span>{c.footerAddress}</span></p></div></div><div className="container footer-bottom"><span>© 2026 CHUNG UEN CO., LTD.</span><span>PRECISION GRINDING / TURNING / INSPECTION</span></div></footer></>;
 }
 
 function HomeAboutSection({ lang }: { lang: Lang }) {
