@@ -18,7 +18,11 @@ export const metadata: Metadata = {
   publisher: siteName,
   category: "manufacturing",
   robots: { index: true, follow: true },
-  icons: { icon: withBasePath("/favicon.svg"), shortcut: withBasePath("/favicon.svg") },
+  icons: {
+    icon: [{ url: withBasePath("/images/chy-logo.png"), type: "image/png" }, { url: withBasePath("/favicon.svg"), type: "image/svg+xml" }],
+    shortcut: withBasePath("/images/chy-logo.png"),
+    apple: withBasePath("/images/chy-logo.png"),
+  },
 };
 
 const structuredData = {

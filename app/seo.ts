@@ -3,11 +3,11 @@ import { siteBasePath, withBasePath } from "@/app/components/site-paths";
 
 /**
  * Set NEXT_PUBLIC_SITE_URL to the real custom domain in Cloudflare Pages.
- * The pages.dev URL keeps previews and first deployments usable before that
- * variable is configured.
+ * The production domain is also the safe fallback for builds where the
+ * variable is not present.
  */
 export const siteName = "長芸有限公司 | CHUNG UEN CO., LTD.";
-export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://chung-uen.pages.dev").replace(/\/$/, "");
+export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://chunguen.com").replace(/\/$/, "");
 
 const normalizePath = (path: string) => {
   if (path === "/") return "/";

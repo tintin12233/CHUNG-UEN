@@ -36,6 +36,7 @@ test("renders every independent company page", async () => {
     assert.match(html, /name="description"/i, pathname);
     assert.match(html, /property="og:title"/i, pathname);
     assert.match(html, /application\/ld\+json/i, pathname);
+    assert.match(html, /images\/chy-logo\.png/i, pathname);
     assert.match(html, /CHUNG UEN CO\., LTD\./, pathname);
     assert.doesNotMatch(html, /CHUNG YUEN CO\., LTD\.|Chung Yuen/, pathname);
     assert.match(html, new RegExp(marker), pathname);
@@ -104,7 +105,7 @@ test("generates crawler metadata files", async () => {
   const sitemap = await readFile(new URL("../dist/client/sitemap.xml", import.meta.url), "utf8");
 
   assert.match(robots, /User-agent: \*/);
-  assert.match(robots, /Sitemap: https:\/\/chung-uen\.pages\.dev\/sitemap\.xml/);
+  assert.match(robots, /Sitemap: https:\/\/chunguen\.com\/sitemap\.xml/);
   assert.match(sitemap, /<urlset xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">/);
-  assert.match(sitemap, /https:\/\/chung-uen\.pages\.dev\/contact\//);
+  assert.match(sitemap, /https:\/\/chunguen\.com\/contact\//);
 });

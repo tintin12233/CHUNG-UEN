@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://chung-uen.pages.dev").replace(/\/$/, "");
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://chunguen.com").replace(/\/$/, "");
 const basePath = (process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/\/$/, "");
 const outputDirectory = path.resolve("dist", "client");
 

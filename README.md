@@ -112,7 +112,7 @@ organization data, `robots.txt`, and `sitemap.xml`. In the Cloudflare Worker
 build settings, set `NEXT_PUBLIC_SITE_URL` to the site's real public URL, for
 example `https://www.example.com`. Keep `NEXT_PUBLIC_BASE_PATH` empty when the
 site is served from a custom domain. If `NEXT_PUBLIC_SITE_URL` is not set, SEO
-URLs use the default `https://chung-uen.pages.dev` address.
+URLs use the default `https://chunguen.com` address.
 
 ## Learn More
 
