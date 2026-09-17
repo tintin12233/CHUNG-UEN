@@ -40,5 +40,5 @@ export function SitePage({ children }: { children: ReactNode }) {
 }
 
 export function PageHero({ index, eyebrow, title, body }: { index: string; eyebrow: string; title: string; body: string }) {
-  return <section className="page-hero"><div className="page-hero-media" aria-hidden="true"><img src="/images/chy-page-hero.png" alt="" /></div><div className="page-hero-scrim" aria-hidden="true" /><div className="container page-hero-grid"><div className="page-hero-content"><p className="eyebrow hero-eyebrow">{eyebrow}</p><h1>{title}</h1><p className="hero-lede">{body}</p><div className="page-hero-meta"><span>CHY / {index}</span><i /><span>PRECISION INDUSTRY</span></div></div></div></section>;
+  return <section className="page-hero" data-page-index={index}><div className="page-hero-media" aria-hidden="true"><img src="/images/chy-page-hero.png" alt="" /></div><div className="page-hero-scrim" aria-hidden="true" /><div className="container page-hero-grid"><div className="page-hero-content"><p className="eyebrow hero-eyebrow">{eyebrow}</p><h1>{title}</h1><p className="hero-lede">{body}</p><div className="page-hero-meta"><span>CHY / {index}</span><i /><span>PRECISION INDUSTRY</span></div></div></div></section>;
 }

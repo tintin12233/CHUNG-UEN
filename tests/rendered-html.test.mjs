@@ -82,10 +82,14 @@ test("renders every independent company page", async () => {
       assert.match(html, /顯示較晚的沿革/);
     }
     if (pathname === "/cases") {
-      assert.match(html, /PRODUCT RANGE \/ 13/i);
+      assert.match(html, /PRODUCT RANGE \/ 12/i);
       assert.match(html, /product-01\.png/);
       assert.match(html, /product-13\.png/);
-      assert.equal((html.match(/class="product-card"/g) ?? []).length, 13);
+      assert.match(html, /product-07\.png/);
+      assert.match(html, /aria-label="精密軸件照片輪播"/);
+      assert.equal((html.match(/class="product-image-carousel-dots"/g) ?? []).length, 1);
+      assert.match(html, /class="product-image-gallery product-image-gallery-reserved"/);
+      assert.equal((html.match(/class="product-card"/g) ?? []).length, 12);
     }
   }
 });

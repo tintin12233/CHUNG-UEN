@@ -17,7 +17,7 @@ export const navItems: { id: string; href: string; label: TextValue }[] = [
   { id: "about", href: "/about", label: { zh: "關於長芸", ja: "長芸について", en: "About Chy" } },
   { id: "services", href: "/services", label: { zh: "加工服務", ja: "加工サービス", en: "Services" } },
   { id: "capacity", href: "/capacity", label: { zh: "加工能力", ja: "加工能力", en: "Capabilities" } },
-  { id: "equipment", href: "/equipment", label: { zh: "設備介紹", ja: "設備紹介", en: "Equipment" } },
+  { id: "equipment", href: "/equipment", label: { zh: "生產設備", ja: "設備紹介", en: "Equipment" } },
   { id: "quality", href: "/quality", label: { zh: "品質檢驗", ja: "品質検査", en: "Quality" } },
   { id: "cases", href: "/cases", label: { zh: "產品介紹", ja: "事例実績", en: "Track Record" } },
   { id: "contact", href: "/contact", label: { zh: "聯絡我們", ja: "お問い合わせ", en: "Contact" } },
@@ -45,8 +45,14 @@ export const copy: Record<Lang, Record<string, string>> = {
     aboutBody: "長芸有限公司專注於精密機械零件加工，從內、外徑精密研磨起家，累積多年在軸、套筒、齒輪及各式精密機械機構零組件之加工經驗。",
     aboutLink: "了解更多",
     serviceEyebrow: "WHAT WE DO",
-    serviceTitle: "從圖面到成品，整合每一道加工流程。",
+    serviceTitle: "加工服務及生產流程",
     serviceBody: "以精密研磨為核心，串連 CNC 車削與合作加工，為機械工具、汽車零件與工業設備提供穩定的精密零件製造。",
+    productionEyebrow: "PRODUCTION FLOW",
+    productionTitle: "生產流程",
+    productionSubtitle: "從圖面評估到成品出貨的一站式整合加工流程",
+    productionBody: "依據產品需求整合車削、銑削、熱處理、研磨及品質檢驗，提供穩定且完整的製程管理。",
+    productionCount: "11 道製程",
+    productionNote: "每一道加工，都有清楚的銜接與品質依據。",
     capacityEyebrow: "CAPABILITIES",
     capacityTitle: "讓每一個尺寸，都有可被驗證的依據。",
     capacityBody: "CNC 車削、內外徑研磨與量測檢驗，組成長芸完整的加工能力。",
@@ -57,7 +63,7 @@ export const copy: Record<Lang, Record<string, string>> = {
     casesTitle: "熟悉關鍵零件，也重視每一次交付。",
     casesBody: "支援機械工具、汽車零件與工業設備客戶，提供符合圖面與公差要求的精密組件。",
     qualityEyebrow: "QUALITY",
-    qualityTitle: "嚴謹檢驗，讓品質穩定發生。",
+    qualityTitle: "嚴格檢驗，讓品質更穩定",
     qualityBody: "從進料、製程到出貨，每一個環節都留下清楚的品質依據。",
     industryEyebrow: "INDUSTRIES",
     industryTitle: "服務需要精度的製造現場。",
@@ -102,6 +108,12 @@ export const copy: Record<Lang, Record<string, string>> = {
     serviceEyebrow: "WHAT WE DO",
     serviceTitle: "図面から完成品まで、工程をまとめて管理します。",
     serviceBody: "精密研磨を中心に、CNC旋盤と協力加工を組み合わせます。",
+    productionEyebrow: "PRODUCTION FLOW",
+    productionTitle: "生産工程",
+    productionSubtitle: "図面評価から完成品出荷まで、一貫した加工フロー",
+    productionBody: "製品の要件に合わせて旋盤、フライス、熱処理、研削、品質検査を組み合わせ、安定した工程管理を提供します。",
+    productionCount: "11工程",
+    productionNote: "すべての工程を明確につなぎ、品質の根拠を残します。",
     capacityEyebrow: "CAPABILITIES",
     capacityTitle: "すべての寸法に、検証できる根拠を。",
     capacityBody: "CNC旋盤、内外径研磨、測定検査を一つの加工能力として提供します。",
@@ -157,6 +169,12 @@ export const copy: Record<Lang, Record<string, string>> = {
     serviceEyebrow: "WHAT WE DO",
     serviceTitle: "One accountable path from drawing to finished part.",
     serviceBody: "Precision grinding at the core, coordinated with CNC turning and partner processes.",
+    productionEyebrow: "PRODUCTION FLOW",
+    productionTitle: "Production flow",
+    productionSubtitle: "One integrated process from drawing review to shipment",
+    productionBody: "We coordinate turning, milling, heat treatment, grinding, and inspection around each part requirement.",
+    productionCount: "11 STEPS",
+    productionNote: "Every handoff stays clear, controlled, and accountable.",
     capacityEyebrow: "CAPABILITIES",
     capacityTitle: "Every dimension backed by a verifiable process.",
     capacityBody: "CNC turning, ID / OD grinding, and inspection form one connected capability.",
@@ -368,28 +386,45 @@ export const homeBusinessContent: Record<Lang, {
 export const services = [
   {
     number: "01",
+    image: "/images/precision-grinding.jpg",
     title: { zh: "精密研磨", ja: "精密研磨", en: "Precision grinding" },
     body: { zh: "內徑、外徑、端面與圓筒研磨，適用於軸件、套筒與高精度圓形零件。", ja: "内径、外径、端面、円筒研磨に対応します。", en: "ID, OD, surface, and cylindrical grinding for precision round parts." },
     tags: { zh: "內徑 / 外徑", ja: "内径 / 外径", en: "ID / OD" },
   },
   {
     number: "02",
+    image: "/images/cnc-turning.png",
     title: { zh: "CNC 車削加工", ja: "CNC旋盤加工", en: "CNC turning" },
     body: { zh: "針對軸、套筒與機械零件，提供打樣、小量與穩定量產加工。", ja: "軸、スリーブ、機械部品の試作から量産まで対応します。", en: "Shafts, sleeves, and custom components for prototypes and repeat production." },
     tags: { zh: "V26 / V36", ja: "V26 / V36", en: "V26 / V36" },
   },
   {
     number: "03",
+    image: "/images/integrated-processing.png",
     title: { zh: "整合加工服務", ja: "一貫加工サービス", en: "Integrated processing" },
     body: { zh: "從材料、車削、合作加工到研磨與檢驗，整合每一個交付環節。", ja: "材料、旋盤、協力加工、研磨、検査まで一貫管理します。", en: "Coordinate turning, partner processes, grinding, and inspection through one window." },
     tags: { zh: "圖面到成品", ja: "図面から完成品", en: "Drawing to part" },
   },
 ];
 
-export const capacityCards = [
-  { label: { zh: "CNC 車削", ja: "CNC旋盤", en: "CNC turning" }, value: "Ø550 × 1250L", note: { zh: "V26-1100L 亦可加工", ja: "V26-1100Lにも対応", en: "V26-1100L also available" } },
-  { label: { zh: "CNC 圓筒研磨", ja: "CNC円筒研磨", en: "CNC cylindrical grinding" }, value: "Ø300 × 400L", note: { zh: "SHIGIYA 設備", ja: "SHIGIYA設備", en: "SHIGIYA equipment" } },
-  { label: { zh: "內外徑複合研磨", ja: "内外径複合研磨", en: "ID / OD grinding" }, value: "Ø450 × 200L", note: { zh: "多設備協同加工", ja: "複数設備で対応", en: "Coordinated processes" } },
+export type ProductionProcessStep = {
+  number: string;
+  title: TextValue;
+  featured?: boolean;
+};
+
+export const productionProcessSteps: ProductionProcessStep[] = [
+  { number: "01", title: { zh: "圖面確認", ja: "図面確認", en: "Drawing review" } },
+  { number: "02", title: { zh: "加工可行性與製程評估", ja: "加工可否と工程評価", en: "Machining feasibility & process evaluation" } },
+  { number: "03", title: { zh: "備料", ja: "材料準備", en: "Material preparation" } },
+  { number: "04", title: { zh: "車削／銑削加工", ja: "旋削／フライス加工", en: "Turning / milling" } },
+  { number: "05", title: { zh: "熱處理", ja: "熱処理", en: "Heat treatment" } },
+  { number: "06", title: { zh: "粗研磨加工", ja: "粗研削加工", en: "Rough grinding" } },
+  { number: "07", title: { zh: "螺紋及特殊研磨", ja: "ねじ・特殊研削", en: "Threading & special grinding" } },
+  { number: "08", title: { zh: "精密內外徑研磨", ja: "精密内外径研削", en: "Precision ID / OD grinding" }, featured: true },
+  { number: "09", title: { zh: "最終品質檢驗", ja: "最終品質検査", en: "Final quality inspection" } },
+  { number: "10", title: { zh: "防鏽・包裝", ja: "防錆・梱包", en: "Rust prevention & packaging" } },
+  { number: "11", title: { zh: "出貨", ja: "出荷", en: "Shipment" } },
 ];
 
 export const equipmentGroups = [
@@ -488,6 +523,8 @@ const aboutGallerySlides = [
   { src: "/images/about-machining-floor.png", alt: "Precision machining floor" },
   { src: "/images/about-factory-wide.png", alt: "Factory machining equipment" },
   { src: "/images/about-exterior.jpg", alt: "Chung Uen company exterior" },
+  { src: "/images/about-gallery/7a0bbafa-179d-4bc5-b634-68bfd0fd2911.png", alt: "Precision grinding in production" },
+  { src: "/images/about-gallery/15d7d216-9975-41e8-b433-7c054050aa8e.png", alt: "Roller components in the machining shop" },
 ];
 
 export function AboutGallery({ lang }: { lang: Lang }) {
