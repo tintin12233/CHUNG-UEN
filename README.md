@@ -105,6 +105,15 @@ To enable it in GitHub, open **Settings → Pages** and set **Source** to
 `/CHUNG-UEN` project path automatically and prefixes site links and assets for
 GitHub Pages.
 
+## SEO and Cloudflare deployment
+
+The production build generates page metadata, Open Graph/Twitter tags, JSON-LD
+organization data, `robots.txt`, and `sitemap.xml`. In the Cloudflare Worker
+build settings, set `NEXT_PUBLIC_SITE_URL` to the site's real public URL, for
+example `https://www.example.com`. Keep `NEXT_PUBLIC_BASE_PATH` empty when the
+site is served from a custom domain. If `NEXT_PUBLIC_SITE_URL` is not set, SEO
+URLs use the default `https://chung-uen.pages.dev` address.
+
 ## Learn More
 
 - [vinext Documentation](https://github.com/cloudflare/vinext)

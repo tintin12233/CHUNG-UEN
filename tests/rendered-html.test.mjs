@@ -1,16 +1,17 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const routes = [
-  ["/", "專注精密研磨"],
-  ["/about", "關於長芸"],
-  ["/services", "從圖面評估到成品"],
-  ["/capacity", "讓每一個尺寸"],
-  ["/equipment", "設備與經驗"],
-  ["/cases", "熟悉關鍵零件"],
-  ["/quality", "嚴格檢驗"],
-  ["/industries", "服務需要精度"],
-  ["/contact", "帶著您的圖面"],
+  ["/", "專注精密研磨", "長芸有限公司｜精密研磨、CNC車削與精密機械零組件"],
+  ["/about", "關於長芸", "關於長芸｜精密機械零組件加工｜長芸有限公司"],
+  ["/services", "從圖面評估到成品", "服務｜精密研磨、CNC車削與整合加工｜長芸有限公司"],
+  ["/capacity", "讓每一個尺寸", "加工能力｜內外徑研磨與 CNC 車削｜長芸有限公司"],
+  ["/equipment", "設備與經驗", "設備｜精密研磨與機械加工設備｜長芸有限公司"],
+  ["/cases", "熟悉關鍵零件", "產品與實績｜精密機械零組件｜長芸有限公司"],
+  ["/quality", "嚴格檢驗", "品質管理｜精密量測與加工品質｜長芸有限公司"],
+  ["/industries", "服務需要精度", "應用產業｜精密機械與工業零組件｜長芸有限公司"],
+  ["/contact", "帶著您的圖面", "聯絡長芸｜精密加工詢價｜長芸有限公司"],
 ];
 
 async function render(pathname) {
@@ -26,12 +27,15 @@ async function render(pathname) {
 }
 
 test("renders every independent company page", async () => {
-  for (const [pathname, marker] of routes) {
+  for (const [pathname, marker, title] of routes) {
     const response = await render(pathname);
     assert.equal(response.status, 200, pathname);
     assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i, pathname);
     const html = await response.text();
-    assert.match(html, /<title>長芸有限公司｜精密研磨與加工服務<\/title>/i, pathname);
+    assert.match(html, new RegExp(`<title>${title}<\\/title>`, "i"), pathname);
+    assert.match(html, /name="description"/i, pathname);
+    assert.match(html, /property="og:title"/i, pathname);
+    assert.match(html, /application\/ld\+json/i, pathname);
     assert.match(html, /CHUNG UEN CO\., LTD\./, pathname);
     assert.doesNotMatch(html, /CHUNG YUEN CO\., LTD\.|Chung Yuen/, pathname);
     assert.match(html, new RegExp(marker), pathname);
@@ -93,4 +97,14 @@ test("renders every independent company page", async () => {
       assert.equal((html.match(/class="product-card"/g) ?? []).length, 20);
     }
   }
+});
+
+test("generates crawler metadata files", async () => {
+  const robots = await readFile(new URL("../dist/client/robots.txt", import.meta.url), "utf8");
+  const sitemap = await readFile(new URL("../dist/client/sitemap.xml", import.meta.url), "utf8");
+
+  assert.match(robots, /User-agent: \*/);
+  assert.match(robots, /Sitemap: https:\/\/chung-uen\.pages\.dev\/sitemap\.xml/);
+  assert.match(sitemap, /<urlset xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">/);
+  assert.match(sitemap, /https:\/\/chung-uen\.pages\.dev\/contact\//);
 });

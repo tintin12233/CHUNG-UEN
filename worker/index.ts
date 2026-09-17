@@ -40,6 +40,12 @@ const worker = {
       }, allowedWidths);
     }
 
+    // `trailingSlash: true` is correct for the exported page routes, but
+    // crawlers expect these metadata files at their extension URLs.
+    if (url.pathname === "/robots.txt" || url.pathname === "/sitemap.xml") {
+      return env.ASSETS.fetch(request);
+    }
+
     return handler.fetch(request, env, ctx);
   },
 };
