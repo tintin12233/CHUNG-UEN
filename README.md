@@ -92,6 +92,19 @@ actions tied to the current ChatGPT user. Leave public content anonymous.
 - `npm test`: build the starter and verify its rendered loading skeleton
 - `npm run db:generate`: generate Drizzle migrations after schema changes
 
+## GitHub Pages
+
+This project is configured for static export and includes a GitHub Actions
+workflow at `.github/workflows/deploy-pages.yml`. The workflow builds the site
+and deploys `dist/client` to:
+
+`https://tintin12233.github.io/CHUNG-UEN/`
+
+To enable it in GitHub, open **Settings → Pages** and set **Source** to
+**GitHub Actions**, then push to the `main` branch. The workflow sets the
+`/CHUNG-UEN` project path automatically and prefixes site links and assets for
+GitHub Pages.
+
 ## Learn More
 
 - [vinext Documentation](https://github.com/cloudflare/vinext)

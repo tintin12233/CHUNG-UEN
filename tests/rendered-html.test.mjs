@@ -4,11 +4,11 @@ import test from "node:test";
 const routes = [
   ["/", "專注精密研磨"],
   ["/about", "關於長芸"],
-  ["/services", "從圖面到成品"],
+  ["/services", "從圖面評估到成品"],
   ["/capacity", "讓每一個尺寸"],
   ["/equipment", "設備與經驗"],
   ["/cases", "熟悉關鍵零件"],
-  ["/quality", "嚴謹檢驗"],
+  ["/quality", "嚴格檢驗"],
   ["/industries", "服務需要精度"],
   ["/contact", "帶著您的圖面"],
 ];
@@ -16,9 +16,10 @@ const routes = [
 async function render(pathname) {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
+  const requestPath = pathname === "/" ? pathname : `${pathname}/`;
   const { default: worker } = await import(workerUrl.href);
   return worker.fetch(
-    new Request(`http://localhost${pathname}`, { headers: { accept: "text/html" } }),
+    new Request(`http://localhost${requestPath}`, { headers: { accept: "text/html" } }),
     { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
     { waitUntil() {}, passThroughOnException() {} },
   );
@@ -82,14 +83,14 @@ test("renders every independent company page", async () => {
       assert.match(html, /顯示較晚的沿革/);
     }
     if (pathname === "/cases") {
-      assert.match(html, /PRODUCT RANGE \/ 12/i);
+      assert.match(html, /PRODUCT RANGE \/ 20/i);
       assert.match(html, /product-01\.png/);
       assert.match(html, /product-13\.png/);
       assert.match(html, /product-07\.png/);
       assert.match(html, /aria-label="精密軸件照片輪播"/);
-      assert.equal((html.match(/class="product-image-carousel-dots"/g) ?? []).length, 1);
+      assert.equal((html.match(/class="product-image-carousel-dots"/g) ?? []).length, 3);
       assert.match(html, /class="product-image-gallery product-image-gallery-reserved"/);
-      assert.equal((html.match(/class="product-card"/g) ?? []).length, 12);
+      assert.equal((html.match(/class="product-card"/g) ?? []).length, 20);
     }
   }
 });

@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight, faArrowUpRightFromSquare, faBoxOpen, faEnvelope, faFax, faFileCircleCheck, faGears, faGaugeHigh, faListCheck, faLocationDot, faMagnifyingGlassChart, faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
 import { AboutGallery, aboutContent, aboutTimeline, applications, copy, equipmentGroups, productionProcessSteps, SectionIntro, services, text, TextValue } from "@/app/page";
 import { PageHero, useSiteLang } from "@/app/components/site-chrome";
+import { withBasePath, withRoutePath } from "@/app/components/site-paths";
 
 export type SectionKind = "about" | "services" | "capacity" | "equipment" | "cases" | "quality" | "industries" | "contact";
 
@@ -93,7 +94,7 @@ function AboutPage() {
   const { lang } = useSiteLang();
   const c = copy[lang];
   const content = aboutContent[lang];
-  return <section className="section about-section"><div className="container"><SectionIntro eyebrow={c.aboutEyebrow} title={c.aboutTitle} body={content.overview} /><div className="about-grid"><div className="about-story"><div className="story-card"><span className="story-index">01</span><p>{content.detail}</p></div><a className="outline-link" href="/quality">{c.aboutLink} <span className="button-icon" aria-hidden="true"><FontAwesomeIcon icon={faArrowRight} /></span></a></div><AboutGallery lang={lang} /></div><div className="about-story-copy">{content.story.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div><div className="about-history"><div className="about-history-header"><div><p className="section-eyebrow">{content.historyEyebrow}</p><h2>{content.historyTitle}</h2></div><p className="history-lede">{content.historyBody}</p></div><AboutTimeline lang={lang} /></div></div></section>;
+  return <section className="section about-section"><div className="container"><SectionIntro eyebrow={c.aboutEyebrow} title={c.aboutTitle} body={content.overview} /><div className="about-grid"><div className="about-story"><div className="story-card"><span className="story-index">01</span><p>{content.detail}</p></div><a className="outline-link" href={withRoutePath("/quality")}>{c.aboutLink} <span className="button-icon" aria-hidden="true"><FontAwesomeIcon icon={faArrowRight} /></span></a></div><AboutGallery lang={lang} /></div><div className="about-story-copy">{content.story.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div><div className="about-history"><div className="about-history-header"><div><p className="section-eyebrow">{content.historyEyebrow}</p><h2>{content.historyTitle}</h2></div><p className="history-lede">{content.historyBody}</p></div><AboutTimeline lang={lang} /></div></div></section>;
 }
 
 function AboutTimeline({ lang }: { lang: "zh" | "ja" | "en" }) {
@@ -127,7 +128,7 @@ function ProductionProcess({ lang }: { lang: "zh" | "ja" | "en" }) {
 function ServicesPage() {
   const { lang } = useSiteLang();
   const c = copy[lang];
-  return <section className="section dark-section services-section"><div className="container"><div className="section-intro"><p className="eyebrow">{c.serviceEyebrow}</p></div><div className="service-grid">{services.map((service) => <article className={`service-card ${service.image ? "service-card-with-image" : ""}`} key={service.number}><div className="service-top"><span>{service.number}</span><b aria-hidden="true"><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></b></div>{service.image && <div className="service-card-image"><img src={service.image} alt={text(service.title, lang)} /></div>}<h3>{text(service.title, lang)}</h3><p>{text(service.body, lang)}</p><span className="service-tag">{text(service.tags, lang)}</span></article>)}</div><div className="process-line"><span>DRAWING</span><i /><span>PROCESS</span><i /><span>FINISHED PART</span></div><ProductionProcess lang={lang} /></div></section>;
+  return <section className="section dark-section services-section"><div className="container"><div className="section-intro"><p className="eyebrow">{c.serviceEyebrow}</p></div><div className="service-grid">{services.map((service) => <article className={`service-card ${service.image ? "service-card-with-image" : ""}`} key={service.number}><div className="service-top"><span>{service.number}</span><b aria-hidden="true"><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></b></div>{service.image && <div className="service-card-image"><img src={withBasePath(service.image)} alt={text(service.title, lang)} /></div>}<h3>{text(service.title, lang)}</h3><p>{text(service.body, lang)}</p><span className="service-tag">{text(service.tags, lang)}</span></article>)}</div><div className="process-line"><span>DRAWING</span><i /><span>PROCESS</span><i /><span>FINISHED PART</span></div><ProductionProcess lang={lang} /></div></section>;
 }
 
 const capacitySpecGroups: Array<{ title: TextValue; items: Array<{ label: TextValue; value: string }> }> = [
@@ -215,7 +216,7 @@ function CapacityPage() {
           {capacityVideos.map((video) => <article className="capacity-video-card" key={video.src}>
             <div className="capacity-video-frame">
               <video controls preload="metadata" playsInline aria-label={text(video.title, lang)}>
-                <source src={video.src} type={video.type} />
+                <source src={withBasePath(video.src)} type={video.type} />
                 {lang === "zh" ? "您的瀏覽器不支援影片播放。" : lang === "ja" ? "お使いのブラウザは動画再生に対応していません。" : "Your browser does not support video playback."}
               </video>
             </div>
@@ -223,7 +224,7 @@ function CapacityPage() {
               <div className="capacity-video-card-meta"><span>{video.code}</span><span>{video.format}</span></div>
               <h4>{text(video.title, lang)}</h4>
               <p>{text(video.detail, lang)}</p>
-              <a className="capacity-video-link" href={video.src} target="_blank" rel="noreferrer">{lang === "zh" ? "另開影片" : lang === "ja" ? "動画を開く" : "Open video"}<span aria-hidden="true">↗</span></a>
+              <a className="capacity-video-link" href={withBasePath(video.src)} target="_blank" rel="noreferrer">{lang === "zh" ? "另開影片" : lang === "ja" ? "動画を開く" : "Open video"}<span aria-hidden="true">↗</span></a>
             </div>
           </article>)}
         </div>
@@ -253,11 +254,11 @@ const equipmentGalleryBody: TextValue = { zh: "從車削、研磨到整廠現場
 function EquipmentPage() {
   const { lang } = useSiteLang();
   const c = copy[lang];
-  return <section className="section"><div className="container"><SectionIntro eyebrow={c.equipmentEyebrow} title={c.equipmentTitle} body={c.equipmentBody} /><div className="equipment-layout"><div className="equipment-placeholder"><img src="/images/about-floor.jpg" alt="Factory equipment" /><div className="placeholder-caption"><span>CHY / EQUIPMENT</span><small>PRECISION MACHINING FLOOR</small></div></div><div className="equipment-groups">{equipmentGroups.map((group) => <div className="equipment-group" key={group.title.en}><h3>{text(group.title, lang)}</h3>{group.items.map(([name, spec, brand, qty]) => <div className="equipment-row" key={`${name}-${spec}`}><span>{name}</span><span>{spec}</span><span>{brand}</span><strong>{qty}</strong></div>)}</div>)}</div></div><EquipmentGallery lang={lang} /></div></section>;
+  return <section className="section"><div className="container"><SectionIntro eyebrow={c.equipmentEyebrow} title={c.equipmentTitle} body={c.equipmentBody} /><div className="equipment-layout"><div className="equipment-placeholder"><img src={withBasePath("/images/about-floor.jpg")} alt="Factory equipment" /><div className="placeholder-caption"><span>CHY / EQUIPMENT</span><small>PRECISION MACHINING FLOOR</small></div></div><div className="equipment-groups">{equipmentGroups.map((group) => <div className="equipment-group" key={group.title.en}><h3>{text(group.title, lang)}</h3>{group.items.map(([name, spec, brand, qty]) => <div className="equipment-row" key={`${name}-${spec}`}><span>{name}</span><span>{spec}</span><span>{brand}</span><strong>{qty}</strong></div>)}</div>)}</div></div><EquipmentGallery lang={lang} /></div></section>;
 }
 
 function EquipmentGallery({ lang }: { lang: "zh" | "ja" | "en" }) {
-  return <div className="equipment-gallery-section"><div className="equipment-gallery-heading"><div><p className="section-eyebrow">EQUIPMENT / 12</p><h3>{text(equipmentGalleryTitle, lang)}</h3></div><p>{text(equipmentGalleryBody, lang)}</p></div><div className="equipment-gallery" aria-label={lang === "zh" ? "設備介紹照片" : lang === "ja" ? "設備紹介写真" : "Equipment gallery"}>{equipmentGalleryImages.map((image, index) => <figure key={image.src}><div className="equipment-gallery-image"><img src={image.src} alt={text(image.label, lang)} /></div><figcaption><span>{String(index + 1).padStart(2, "0")}</span><strong>{text(image.label, lang)}</strong></figcaption></figure>)}</div></div>;
+  return <div className="equipment-gallery-section"><div className="equipment-gallery-heading"><div><p className="section-eyebrow">EQUIPMENT / 12</p><h3>{text(equipmentGalleryTitle, lang)}</h3></div><p>{text(equipmentGalleryBody, lang)}</p></div><div className="equipment-gallery" aria-label={lang === "zh" ? "設備介紹照片" : lang === "ja" ? "設備紹介写真" : "Equipment gallery"}>{equipmentGalleryImages.map((image, index) => <figure key={image.src}><div className="equipment-gallery-image"><img src={withBasePath(image.src)} alt={text(image.label, lang)} /></div><figcaption><span>{String(index + 1).padStart(2, "0")}</span><strong>{text(image.label, lang)}</strong></figcaption></figure>)}</div></div>;
 }
 
 function ProductImageGallery({ product, lang }: { product: ProductEntry; lang: "zh" | "ja" | "en" }) {
@@ -269,7 +270,7 @@ function ProductImageGallery({ product, lang }: { product: ProductEntry; lang: "
     setActiveIndex((current) => (current + direction + images.length) % images.length);
   };
 
-  return <div className={galleryClassName} aria-label={images.length > 1 ? `${title}照片輪播` : undefined} aria-roledescription={images.length > 1 ? "carousel" : undefined}><div className="product-image-wrap"><img className="product-image" src={images[activeIndex]} alt={`${title}－第 ${activeIndex + 1} 張`} /></div>{images.length > 1 && <div className="product-image-carousel-controls"><button className="product-image-carousel-arrow" type="button" aria-label="上一張產品照片" onClick={() => moveImage(-1)}><FontAwesomeIcon icon={faArrowLeft} aria-hidden="true" /></button><div className="product-image-carousel-dots" role="tablist" aria-label="產品照片選擇">{images.map((image, index) => <button key={image} className={index === activeIndex ? "is-active" : ""} type="button" role="tab" aria-selected={index === activeIndex} aria-label={`顯示第 ${index + 1} 張產品照片`} onClick={() => setActiveIndex(index)} />)}</div><button className="product-image-carousel-arrow" type="button" aria-label="下一張產品照片" onClick={() => moveImage(1)}><FontAwesomeIcon icon={faArrowRight} aria-hidden="true" /></button></div>}</div>;
+  return <div className={galleryClassName} aria-label={images.length > 1 ? `${title}照片輪播` : undefined} aria-roledescription={images.length > 1 ? "carousel" : undefined}><div className="product-image-wrap"><img className="product-image" src={withBasePath(images[activeIndex])} alt={`${title}－第 ${activeIndex + 1} 張`} /></div>{images.length > 1 && <div className="product-image-carousel-controls"><button className="product-image-carousel-arrow" type="button" aria-label="上一張產品照片" onClick={() => moveImage(-1)}><FontAwesomeIcon icon={faArrowLeft} aria-hidden="true" /></button><div className="product-image-carousel-dots" role="tablist" aria-label="產品照片選擇">{images.map((image, index) => <button key={image} className={index === activeIndex ? "is-active" : ""} type="button" role="tab" aria-selected={index === activeIndex} aria-label={`顯示第 ${index + 1} 張產品照片`} onClick={() => setActiveIndex(index)} />)}</div><button className="product-image-carousel-arrow" type="button" aria-label="下一張產品照片" onClick={() => moveImage(1)}><FontAwesomeIcon icon={faArrowRight} aria-hidden="true" /></button></div>}</div>;
 }
 
 function CasesPage() {
@@ -421,13 +422,13 @@ function QualityPage() {
           <div className="quality-equipment-main">
             <div className="quality-equipment-cards">
               {qualityEquipmentCards.map((card) => <article className="quality-equipment-card" key={card.src}>
-                <img src={card.src} alt={text(card.title, lang)} />
+                <img src={withBasePath(card.src)} alt={text(card.title, lang)} />
                 <div className="quality-equipment-card-copy"><span>{text(card.kicker, lang)}</span><h3>{text(card.title, lang)}</h3><p>{text(card.detail, lang)}</p></div>
               </article>)}
             </div>
             <div className="quality-metrics" aria-label={lang === "zh" ? "主要量測項目" : lang === "ja" ? "主な測定項目" : "Primary measurement categories"}>
               {qualityMetrics.map((metric) => <div className="quality-metric" key={metric.id}>
-                {metric.icon ? <span className="quality-metric-image quality-metric-fa-icon"><FontAwesomeIcon icon={metric.icon} aria-hidden="true" /></span> : metric.image && metric.imageAlt ? <span className="quality-metric-image"><img src={metric.image} alt={text(metric.imageAlt, lang)} /></span> : null}
+                {metric.icon ? <span className="quality-metric-image quality-metric-fa-icon"><FontAwesomeIcon icon={metric.icon} aria-hidden="true" /></span> : metric.image && metric.imageAlt ? <span className="quality-metric-image"><img src={withBasePath(metric.image)} alt={text(metric.imageAlt, lang)} /></span> : null}
                 <span className="quality-metric-copy">{metric.count && <strong className="quality-metric-count">{text(metric.count, lang)}</strong>}<span className="quality-metric-label">{text(metric.label, lang)}</span></span>
               </div>)}
             </div>
@@ -450,7 +451,7 @@ function QualityPage() {
       <div className="container">
         <QualitySectionHeading title={text(qualityGalleryTitle, lang)} english="QUALITY / 15" light />
         <p className="quality-gallery-intro">{text(qualityGalleryBody, lang)}</p>
-        <div className="quality-gallery" aria-label={lang === "zh" ? "品質檢驗照片" : lang === "ja" ? "品質検査写真" : "Quality inspection photos"}>{qualityGalleryImages.map((image) => <figure key={image.src}><img src={image.src} alt={text(image.alt, lang)} /></figure>)}</div>
+        <div className="quality-gallery" aria-label={lang === "zh" ? "品質檢驗照片" : lang === "ja" ? "品質検査写真" : "Quality inspection photos"}>{qualityGalleryImages.map((image) => <figure key={image.src}><img src={withBasePath(image.src)} alt={text(image.alt, lang)} /></figure>)}</div>
       </div>
     </div>
   </section>;
