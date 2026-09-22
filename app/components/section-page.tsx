@@ -2,7 +2,7 @@
 
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight, faArrowUpRightFromSquare, faBoxOpen, faEnvelope, faFax, faFileCircleCheck, faGears, faGaugeHigh, faListCheck, faLocationDot, faMagnifyingGlassChart, faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faArrowRight, faBoxOpen, faEnvelope, faFax, faFileCircleCheck, faGears, faGaugeHigh, faListCheck, faLocationDot, faMagnifyingGlassChart, faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
 import { AboutGallery, aboutContent, aboutTimeline, applications, copy, equipmentGroups, productionProcessSteps, SectionIntro, services, text, TextValue } from "@/app/page";
 import { PageHero, useSiteLang } from "@/app/components/site-chrome";
 import { withBasePath, withRoutePath } from "@/app/components/site-paths";
@@ -128,7 +128,7 @@ function ProductionProcess({ lang }: { lang: "zh" | "ja" | "en" }) {
 function ServicesPage() {
   const { lang } = useSiteLang();
   const c = copy[lang];
-  return <section className="section dark-section services-section"><div className="container"><div className="section-intro"><p className="eyebrow">{c.serviceEyebrow}</p></div><div className="service-grid">{services.map((service) => <article className={`service-card ${service.image ? "service-card-with-image" : ""}`} key={service.number}><div className="service-top"><span>{service.number}</span><b aria-hidden="true"><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></b></div>{service.image && <div className="service-card-image"><img src={withBasePath(service.image)} alt={text(service.title, lang)} /></div>}<h3>{text(service.title, lang)}</h3><p>{text(service.body, lang)}</p><span className="service-tag">{text(service.tags, lang)}</span></article>)}</div><div className="process-line"><span>DRAWING</span><i /><span>PROCESS</span><i /><span>FINISHED PART</span></div><ProductionProcess lang={lang} /></div></section>;
+  return <section className="section dark-section services-section"><div className="container"><div className="section-intro"><p className="eyebrow">{c.serviceEyebrow}</p></div><div className="service-grid">{services.map((service) => <article className={`service-card ${service.image ? "service-card-with-image" : ""}`} key={service.number}><div className="service-top"><span>{service.number}</span></div>{service.image && <div className="service-card-image"><img src={withBasePath(service.image)} alt={text(service.title, lang)} /></div>}<h3>{text(service.title, lang)}</h3><p>{text(service.body, lang)}</p><span className="service-tag">{text(service.tags, lang)}</span></article>)}</div><div className="process-line"><span>DRAWING</span><i /><span>PROCESS</span><i /><span>FINISHED PART</span></div><ProductionProcess lang={lang} /></div></section>;
 }
 
 const capacitySpecGroups: Array<{ title: TextValue; items: Array<{ label: TextValue; value: string }> }> = [
