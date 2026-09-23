@@ -43,7 +43,7 @@ img { display: block; max-width: 100%; }
 .brand-mark-original::before { content: ""; position: absolute; top: -2px; left: 7px; width: 37px; border-top: 2px solid var(--orange); transform: rotate(-17deg); }
 .brand-mark-original::after { content: ""; position: absolute; right: -5px; bottom: -4px; width: 48px; border-bottom: 3px solid var(--orange); transform: rotate(-3deg); }
 .brand-copy { display: grid; min-width: 0; gap: 4px; }
-.brand-copy strong { color: #f5f3ef; font-size: 20px; font-weight: 700; letter-spacing: 0.08em; }
+.brand-copy strong { color: #f5f3ef; font-size: 22px; font-weight: 700; letter-spacing: 0.08em; }
 .brand-copy small { color: rgba(255, 255, 255, 0.74); font-size: 11px; letter-spacing: 0.08em; }
 .desktop-nav { display: flex; min-width: 0; align-items: stretch; justify-content: flex-end; gap: clamp(16px, 2vw, 33px); height: 100%; }
 .desktop-nav a { position: relative; display: inline-flex; align-items: center; min-height: 74px; color: rgba(255, 255, 255, 0.88); font-size: 14px; font-weight: 600; white-space: nowrap; }
@@ -554,7 +554,7 @@ img { display: block; max-width: 100%; }
   .brand-mark { width: 54px; height: 32px; }
   .brand-mark img { width: 54px; height: 32px; }
   .brand-mark-original { width: 50px; height: 36px; font-size: 21px; }
-  .brand-copy strong { font-size: 14px; letter-spacing: 0.04em; }
+  .brand-copy strong { font-size: 16px; letter-spacing: 0.04em; }
   .brand-copy small { display: none; }
   .home-header .home-language-switcher { gap: 0; }
   .home-header .home-language-switcher button { padding: 4px 3px; font-size: 9px; }
