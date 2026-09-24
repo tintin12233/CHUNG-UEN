@@ -92,6 +92,30 @@ actions tied to the current ChatGPT user. Leave public content anonymous.
 - `npm test`: build the starter and verify its rendered loading skeleton
 - `npm run db:generate`: generate Drizzle migrations after schema changes
 
+## Contact form email
+
+The contact form posts to `/api/contact`. The Cloudflare Worker sends the
+formatted inquiry through Resend to `chunguen851996@gmail.com`.
+
+Before sending real inquiries, verify the sender domain in Resend and set the
+sender address to a verified address, for example:
+
+```text
+# .dev.vars (local only; never commit this file)
+RESEND_API_KEY=re_xxxxxxxxx
+CONTACT_FROM_EMAIL=長芸網站 <website@your-verified-domain.com>
+```
+
+For the deployed Worker, configure the same values as Cloudflare secrets:
+
+```bash
+npx wrangler secret put RESEND_API_KEY
+npx wrangler secret put CONTACT_FROM_EMAIL
+```
+
+The static GitHub Pages deployment cannot process `/api/contact`; use the
+Cloudflare Worker/custom-domain deployment for the live form.
+
 ## GitHub Pages
 
 This project is configured for static export and includes a GitHub Actions

@@ -254,7 +254,7 @@ const equipmentGalleryBody: TextValue = { zh: "從車削、研磨到整廠現場
 function EquipmentPage() {
   const { lang } = useSiteLang();
   const c = copy[lang];
-  return <section className="section"><div className="container"><SectionIntro eyebrow={c.equipmentEyebrow} title={c.equipmentTitle} body={c.equipmentBody} /><div className="equipment-layout"><div className="equipment-placeholder"><img src={withBasePath("/images/about-floor.jpg")} alt="Factory equipment" /><div className="placeholder-caption"><span>CHY / EQUIPMENT</span><small>PRECISION MACHINING FLOOR</small></div></div><div className="equipment-groups">{equipmentGroups.map((group) => <div className="equipment-group" key={group.title.en}><h3>{text(group.title, lang)}</h3>{group.items.map(([name, spec, brand, qty]) => <div className="equipment-row" key={`${name}-${spec}`}><span>{name}</span><span>{spec}</span><span>{brand}</span><strong>{qty}</strong></div>)}</div>)}</div></div><EquipmentGallery lang={lang} /></div></section>;
+  return <section className="section"><div className="container"><SectionIntro eyebrow={c.equipmentEyebrow} title={c.equipmentTitle} body={c.equipmentBody} /><div className="equipment-layout"><div className="equipment-groups" aria-label={lang === "zh" ? "公司設備規格與型號" : lang === "ja" ? "設備の仕様と型式" : "Equipment specifications and models"}>{equipmentGroups.map((group) => <section className="equipment-group" key={group.title.en}><div className="equipment-group-heading"><h3>{text(group.title, lang)}</h3><span>{String(group.rows.length).padStart(2, "0")} {lang === "zh" ? "筆資料" : lang === "ja" ? "項目" : "records"}</span></div><div className={`equipment-table equipment-table-${group.headers.length}`} role="table" aria-label={text(group.title, lang)}><div className="equipment-row equipment-row-header" role="row">{group.headers.map((header, index) => <span key={`${group.title.en}-header-${index}`} role="columnheader">{text(header, lang)}</span>)}</div>{group.rows.map((row, rowIndex) => <div className="equipment-row" role="row" key={`${group.title.en}-${rowIndex}`}>{row.map((cell, cellIndex) => cellIndex === row.length - 1 ? <strong role="cell" key={`${group.title.en}-${rowIndex}-${cellIndex}`}>{text(cell, lang)}</strong> : <span role="cell" key={`${group.title.en}-${rowIndex}-${cellIndex}`}>{text(cell, lang)}</span>)}</div>)}</div></section>)}</div></div><EquipmentGallery lang={lang} /></div></section>;
 }
 
 function EquipmentGallery({ lang }: { lang: "zh" | "ja" | "en" }) {
@@ -466,7 +466,7 @@ function IndustriesPage() {
 function ContactPage() {
   const { lang } = useSiteLang();
   const c = copy[lang];
-  const formCopy: Record<"zh" | "ja" | "en", {
+  const formCopy: {
     topic: string;
     topicPlaceholder: string;
     company: string;
@@ -484,24 +484,49 @@ function ContactPage() {
     cityPlaceholder: string;
     districtPlaceholder: string;
     clear: string;
-  }> = {
+  } = {
     zh: { topic: "問題分類", topicPlaceholder: "* 問題分類", company: "公司名稱", name: "姓名", title: "稱謂", titleMr: "先生", titleMs: "女士", phone: "電話", email: "E-mail", city: "縣市", district: "區域", address: "地址", website: "網站", message: "內容", cityPlaceholder: "請選擇", districtPlaceholder: "請選擇", clear: "清除" },
     ja: { topic: "お問い合わせ分類", topicPlaceholder: "分類を選択してください", company: "会社名", name: "お名前", title: "敬称", titleMr: "様", titleMs: "様", phone: "電話番号", email: "E-mail", city: "県・市", district: "区・郷鎮", address: "住所", website: "ウェブサイト", message: "お問い合わせ内容", cityPlaceholder: "県・市を選択", districtPlaceholder: "区・郷鎮を選択", clear: "クリア" },
     en: { topic: "Inquiry type", topicPlaceholder: "* Inquiry type", company: "Company name", name: "Name", title: "Title", titleMr: "Mr.", titleMs: "Ms.", phone: "Phone", email: "E-mail", city: "City / county", district: "District", address: "Address", website: "Website", message: "Message", cityPlaceholder: "Select", districtPlaceholder: "Select", clear: "Clear" },
   }[lang];
-  const [submitted, setSubmitted] = useState(false);
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [city, setCity] = useState("");
   const [district, setDistrict] = useState("");
   const [title, setTitle] = useState("mr");
   const selectedCity = taiwanLocations.find((location) => location.name === city);
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setSubmitted(true); };
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    setFormStatus("sending");
+
+    try {
+      const payload = Object.fromEntries(new FormData(form).entries());
+      const response = await fetch(withBasePath("/api/contact"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...payload, lang }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Contact form submission failed");
+      }
+
+      form.reset();
+      setCity("");
+      setDistrict("");
+      setTitle("mr");
+      setFormStatus("success");
+    } catch {
+      setFormStatus("error");
+    }
+  };
   const handleClear = (event: React.MouseEvent<HTMLButtonElement>) => {
     const form = event.currentTarget.form;
     form?.reset();
     setCity("");
     setDistrict("");
     setTitle("mr");
-    setSubmitted(false);
+    setFormStatus("idle");
   };
   return <section className="section dark-section"><div className="container"><SectionIntro eyebrow={c.contactEyebrow} title={c.contactTitle} body={c.contactBody} /><div className="contact-layout"><aside className="contact-card"><h3>長芸有限公司</h3><div className="contact-details"><p className="contact-detail"><FontAwesomeIcon icon={faUser} aria-hidden="true" /><span>聯絡人:  陳總經理</span></p><a className="contact-detail" href="tel:0426763118"><FontAwesomeIcon icon={faPhone} aria-hidden="true" /><span>04-26763118</span></a><p className="contact-detail"><FontAwesomeIcon icon={faFax} aria-hidden="true" /><span>04-26763117</span></p><a className="contact-detail" href="mailto:charngyun0815@gmail.com"><FontAwesomeIcon icon={faEnvelope} aria-hidden="true" /><span>charngyun0815@gmail.com</span></a><p className="contact-detail"><FontAwesomeIcon icon={faLocationDot} aria-hidden="true" /><span>台中市大甲區重義一路151號</span></p></div></aside><form className="rfq-form" onSubmit={handleSubmit}><div className="form-heading"><span>RFQ / 01</span><strong>{lang === "zh" ? "聯絡表單" : lang === "ja" ? "お問い合わせフォーム" : "Contact form"}</strong></div><div className="form-grid">
     <label className="form-wide"><span>{formCopy.topic} <b aria-hidden="true">*</b></span><select name="topic" required defaultValue=""><option value="" disabled>{formCopy.topicPlaceholder}</option>{contactIssues.map((issue) => <option key={issue.value} value={issue.value}>{issue.label[lang]}</option>)}</select></label>
@@ -515,7 +540,8 @@ function ContactPage() {
     <label className="form-wide"><span>{formCopy.address}</span><input name="address" type="text" placeholder={formCopy.address} /></label>
     <label className="form-wide"><span>{formCopy.website}</span><input name="website" type="url" placeholder={formCopy.website} /></label>
     <label className="form-wide"><span>{formCopy.message} <b aria-hidden="true">*</b></span><textarea name="message" required rows={5} placeholder={`* ${formCopy.message}`} /></label>
-  </div><div className="form-footer"><p aria-live="polite">{submitted ? c.formDone : c.formNotice}</p><div className="form-actions"><button className="form-clear" type="button" onClick={handleClear}>{formCopy.clear}</button><button className="hero-button" type="submit">{c.formButton} <span className="button-icon" aria-hidden="true"><FontAwesomeIcon icon={faArrowRight} /></span></button></div></div></form></div></div></section>;
+    <label className="form-honeypot" aria-hidden="true"><span>Leave blank</span><input name="websiteConfirm" tabIndex={-1} autoComplete="off" /></label>
+  </div><div className="form-footer"><p aria-live="polite">{formStatus === "success" ? c.formDone : formStatus === "error" ? c.formError : formStatus === "sending" ? c.formSending : c.formNotice}</p><div className="form-actions"><button className="form-clear" type="button" onClick={handleClear}>{formCopy.clear}</button><button className="hero-button" type="submit" disabled={formStatus === "sending"}>{formStatus === "sending" ? c.formSending : c.formButton} <span className="button-icon" aria-hidden="true"><FontAwesomeIcon icon={faArrowRight} /></span></button></div></div></form></div></div></section>;
 }
 
 export function SectionPage({ kind }: { kind: SectionKind }) {

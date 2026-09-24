@@ -58,7 +58,7 @@ export const copy: Record<Lang, Record<string, string>> = {
     capacityTitle: "讓每一個尺寸，都有可被驗證的依據。",
     capacityBody: "CNC 車削、內外徑研磨與量測檢驗，組成長芸完整的加工能力。",
     equipmentEyebrow: "EQUIPMENT",
-    equipmentTitle: "設備與經驗，支撐穩定的交期與品質。",
+    equipmentTitle: "設備經驗\n支撐穩定的交期與品質",
     equipmentBody: "依照零件形狀、尺寸與精度要求，選擇合適設備與加工條件。",
     casesEyebrow: "TRACK RECORD",
     casesTitle: "熟悉關鍵零件，也重視每一次交付。",
@@ -73,9 +73,11 @@ export const copy: Record<Lang, Record<string, string>> = {
     contactTitle: "帶著您的圖面，和我們討論合適的加工方式。",
     contactBody: "提供零件尺寸、材質、公差與數量，我們會協助評估加工流程。",
     contactPerson: "陳先生／長芸有限公司",
-    formNotice: "目前為展示用表單，尚未串接寄送功能。",
+    formNotice: "我們會將資料整理後寄送至公司信箱。",
     formButton: "送出詢問",
-    formDone: "已收到您的詢問預覽。",
+    formSending: "傳送中...",
+    formDone: "詢問已送出，我們會盡快與您聯絡。",
+    formError: "送出失敗，請稍後再試，或直接寄信至 chunguen851996@gmail.com。",
     menu: "選單",
     close: "關閉",
     footerDescription: "專注精密研磨，提供穩定可靠的精密零件加工服務。",
@@ -134,9 +136,11 @@ export const copy: Record<Lang, Record<string, string>> = {
     contactTitle: "図面をお持ちください。最適な加工方法を相談しましょう。",
     contactBody: "寸法、材質、公差、数量をお知らせください。",
     contactPerson: "長芸有限公司",
-    formNotice: "デモ用フォームです。送信機能は未接続です。",
+    formNotice: "入力内容を確認して会社のメールアドレスへ送信します。",
     formButton: "問い合わせる",
-    formDone: "問い合わせ内容を確認しました。",
+    formSending: "送信中...",
+    formDone: "お問い合わせを送信しました。",
+    formError: "送信に失敗しました。時間をおいて再度お試しいただくか、メールでお問い合わせください。",
     menu: "メニュー",
     close: "閉じる",
     footerDescription: "精密研磨に集中し、安定した部品加工を提供します。",
@@ -195,9 +199,11 @@ export const copy: Record<Lang, Record<string, string>> = {
     contactTitle: "Bring your drawing. Let us find the right process.",
     contactBody: "Share dimensions, material, tolerance, and quantity for a practical review.",
     contactPerson: "Chung Uen Co., Ltd.",
-    formNotice: "Demo form only. Submission is not connected yet.",
+    formNotice: "Your inquiry will be sent to our company inbox.",
     formButton: "Send inquiry",
-    formDone: "Your inquiry preview is ready.",
+    formSending: "Sending...",
+    formDone: "Your inquiry has been sent. We will be in touch soon.",
+    formError: "Sending failed. Please try again later or email chunguen851996@gmail.com directly.",
     menu: "MENU",
     close: "CLOSE",
     footerDescription: "Focused grinding. Dependable precision.",
@@ -428,11 +434,190 @@ export const productionProcessSteps: ProductionProcessStep[] = [
   { number: "11", title: { zh: "出貨", ja: "出荷", en: "Shipment" } },
 ];
 
-export const equipmentGroups = [
-  { title: { zh: "研磨設備", ja: "研磨設備", en: "Grinding equipment" }, items: [["CNC 圓筒研磨機", "Ø300 × 400L", "SHIGIYA", "4"], ["外徑研磨機", "Ø320 × 1500L", "TOYODA", "3"]] },
-  { title: { zh: "車削設備", ja: "旋盤設備", en: "Turning equipment" }, items: [["CNC 車削 V26", "Ø500 × 1100L", "Taiwan", "1"], ["CNC 車削 V36", "Ø550 × 1250L", "Taiwan", "1"]] },
-  { title: { zh: "量測設備", ja: "測定設備", en: "Inspection & measurement" }, items: [["表面粗度量測", "Ra 0.01", "Mahr", "1"], ["高度量測儀", "450 × 500", "TESA", "1"]] },
-];
+export type EquipmentGroup = {
+  title: TextValue;
+  headers: TextValue[];
+  rows: TextValue[][];
+};
+
+export const equipmentGroups: EquipmentGroup[] = [
+  {
+    title: { zh: "研磨設備", ja: "研磨設備", en: "Grinding equipment" },
+    headers: [
+      { zh: "名稱", ja: "名称", en: "Equipment" },
+      { zh: "規格", ja: "規格", en: "Specification" },
+      { zh: "廠牌型號", ja: "メーカー・型式", en: "Brand / model" },
+      { zh: "數量", ja: "数量", en: "Qty." },
+    ],
+    rows: [
+      [
+        { zh: "中心孔磨床", ja: "センターホール研削盤", en: "Center-hole grinder" },
+        { zh: "Ø100×1000L", ja: "Ø100×1000L", en: "Ø100×1000L" },
+        { zh: "(美國) BRYANT", ja: "(米国) BRYANT", en: "BRYANT / USA" },
+        { zh: "1", ja: "1", en: "1" },
+      ],
+      [
+        { zh: "圓筒磨床", ja: "円筒研削盤", en: "Cylindrical grinder" },
+        { zh: "Ø320×1500L", ja: "Ø320×1500L", en: "Ø320×1500L" },
+        { zh: "(日本)TOYODA/SHIGIYA", ja: "(日本)TOYODA/SHIGIYA", en: "TOYODA / SHIGIYA / Japan" },
+        { zh: "3", ja: "3", en: "3" },
+      ],
+      [
+        { zh: "萬能圓筒磨床", ja: "万能円筒研削盤", en: "Universal cylindrical grinder" },
+        { zh: "Ø350×1500L", ja: "Ø350×1500L", en: "Ø350×1500L" },
+        { zh: "(台製)", ja: "(台湾製)", en: "Taiwan-made" },
+        { zh: "4", ja: "4", en: "4" },
+      ],
+      [
+        { zh: "內徑專用研磨機", ja: "内径専用研削盤", en: "Internal grinding machine" },
+        { zh: "Ø350×1000L(有支持架)", ja: "Ø350×1000L（支持架付き）", en: "Ø350×1000L (with steady rest)" },
+        { zh: "(台製)", ja: "(台湾製)", en: "Taiwan-made" },
+        { zh: "1", ja: "1", en: "1" },
+      ],
+      [
+        { zh: "CNC圓筒磨床", ja: "CNC円筒研削盤", en: "CNC cylindrical grinder" },
+        { zh: "Ø300×400L～1500L", ja: "Ø300×400L～1500L", en: "Ø300×400L–1500L" },
+        { zh: "(日本)SHIGIYA、大光長榮", ja: "(日本)SHIGIYA・大光長榮", en: "SHIGIYA / Daguang Changrong" },
+        { zh: "6", ja: "6", en: "6" },
+      ],
+      [
+        { zh: "CNC內、外徑複合式磨床", ja: "CNC内外径複合研削盤", en: "CNC ID / OD compound grinder" },
+        { zh: "Ø450×200L", ja: "Ø450×200L", en: "Ø450×200L" },
+        { zh: "(台製) 鉅陞", ja: "(台湾製) 鉅陞", en: "Taiwan-made Jusheng" },
+        { zh: "5", ja: "5", en: "5" },
+      ],
+      [
+        { zh: "轉盤、平面磨床", ja: "ロータリー・平面研削盤", en: "Rotary / surface grinder" },
+        { zh: "Ø10～450 / Ø300×700L", ja: "Ø10～450 / Ø300×700L", en: "Ø10–450 / Ø300×700L" },
+        { zh: "(台製)", ja: "(台湾製)", en: "Taiwan-made" },
+        { zh: "2", ja: "2", en: "2" },
+      ],
+    ],
+  },
+  {
+    title: { zh: "量測與檢驗設備", ja: "測定・検査設備", en: "Measurement and inspection equipment" },
+    headers: [
+      { zh: "名稱", ja: "名称", en: "Equipment" },
+      { zh: "規格", ja: "規格", en: "Specification" },
+      { zh: "廠牌型號", ja: "メーカー・型式", en: "Brand / model" },
+      { zh: "數量", ja: "数量", en: "Qty." },
+    ],
+    rows: [
+      [
+        { zh: "電子式外徑卡規", ja: "電子式外側ノギス", en: "Electronic outside caliper" },
+        { zh: "Ø0～Ø275", ja: "Ø0～Ø275", en: "Ø0–Ø275" },
+        { zh: "(日本/美國)", ja: "(日本／米国)", en: "Japan / USA" },
+        { zh: "18", ja: "18", en: "18" },
+      ],
+      [
+        { zh: "外徑環規", ja: "外径リングゲージ", en: "Outside ring gauges" },
+        { zh: "Ø15～Ø300", ja: "Ø15～Ø300", en: "Ø15–Ø300" },
+        { zh: "(台製)", ja: "(台湾製)", en: "Taiwan-made" },
+        { zh: "80", ja: "80", en: "80" },
+      ],
+      [
+        { zh: "內徑環規", ja: "内径リングゲージ", en: "Inside ring gauges" },
+        { zh: "Ø16～Ø220", ja: "Ø16～Ø220", en: "Ø16–Ø220" },
+        { zh: "(台製/英國/德國)", ja: "(台湾製／英国／ドイツ)", en: "Taiwan / UK / Germany" },
+        { zh: "120", ja: "120", en: "120" },
+      ],
+      [
+        { zh: "0級塊規&陶瓷塊規", ja: "0級ブロックゲージ・セラミックゲージ", en: "Grade 0 and ceramic gauge blocks" },
+        { zh: "0.1～300", ja: "0.1～300", en: "0.1–300" },
+        { zh: "(日本/美國)", ja: "(日本／米国)", en: "Japan / USA" },
+        { zh: "2 組", ja: "2 組", en: "2 sets" },
+      ],
+      [
+        { zh: "外徑分厘卡", ja: "外側マイクロメータ", en: "Outside micrometer" },
+        { zh: "0～525", ja: "0～525", en: "0–525" },
+        { zh: "(日本)Mitutoyo", ja: "(日本)Mitutoyo", en: "Mitutoyo / Japan" },
+        { zh: "90", ja: "90", en: "90" },
+      ],
+      [
+        { zh: "內徑測缸規", ja: "内径シリンダーゲージ", en: "Bore gauge" },
+        { zh: "10～350", ja: "10～350", en: "10–350" },
+        { zh: "(日本/瑞士/德國)", ja: "(日本／スイス／ドイツ)", en: "Japan / Switzerland / Germany" },
+        { zh: "50", ja: "50", en: "50" },
+      ],
+      [
+        { zh: "表面粗糙儀", ja: "表面粗さ測定機", en: "Surface roughness tester" },
+        { zh: "SJ-210", ja: "SJ-210", en: "SJ-210" },
+        { zh: "Mitutoyo", ja: "Mitutoyo", en: "Mitutoyo" },
+        { zh: "1", ja: "1", en: "1" },
+      ],
+      [
+        { zh: "洛氏硬度計", ja: "ロックウェル硬さ試験機", en: "Rockwell hardness tester" },
+        { zh: "—", ja: "—", en: "—" },
+        { zh: "(日本)", ja: "(日本)", en: "Japan" },
+        { zh: "1", ja: "1", en: "1" },
+      ],
+      [
+        { zh: "里氏硬度計", ja: "リーブ硬さ試験機", en: "Leeb hardness tester" },
+        { zh: "TH120A手持式", ja: "TH120A・ハンディ型", en: "TH120A handheld" },
+        { zh: "—", ja: "—", en: "—" },
+        { zh: "1", ja: "1", en: "1" },
+      ],
+      [
+        { zh: "蔡司三次元量床", ja: "ZEISS三次元測定機", en: "ZEISS coordinate measuring machine" },
+        { zh: "700×1000×600", ja: "700×1000×600", en: "700×1000×600" },
+        { zh: "德國Contura", ja: "ドイツ Contura", en: "Contura / Germany" },
+        { zh: "1", ja: "1", en: "1" },
+      ],
+      [
+        { zh: "花崗岩平台", ja: "花崗岩定盤", en: "Granite surface plate" },
+        { zh: "600×900", ja: "600×900", en: "600×900" },
+        { zh: "(美國)A級", ja: "(米国)A級", en: "Grade A / USA" },
+        { zh: "1", ja: "1", en: "1" },
+      ],
+    ],
+  },
+  {
+    title: { zh: "量測治具", ja: "測定治具", en: "Measurement fixtures" },
+    headers: [
+      { zh: "名稱", ja: "名称", en: "Gauge" },
+      { zh: "規格", ja: "規格", en: "Specification" },
+      { zh: "廠牌型號", ja: "メーカー・型式", en: "Brand / model" },
+      { zh: "數量", ja: "数量", en: "Qty." },
+    ],
+    rows: [
+      [
+        { zh: "銑床斜度規及其它", ja: "フライス盤テーパーゲージほか", en: "Milling taper gauges and others" },
+        { zh: "30#、40#、A50#、MT3#~MT6#、ER11~ER40", ja: "30#、40#、A50#、MT3#～MT6#、ER11～ER40", en: "30#, 40#, A50#, MT3#–MT6#, ER11–ER40" },
+        { zh: "(德國)Helios、(台製)", ja: "(ドイツ)Helios・(台湾製)", en: "Helios / Germany; Taiwan-made" },
+        { zh: "各1", ja: "各1", en: "1 each" },
+      ],
+      [
+        { zh: "車床鼻規", ja: "旋盤ノーズゲージ", en: "Lathe nose gauges" },
+        { zh: "A4、A5、A6、A8、A11、A15、A20", ja: "A4、A5、A6、A8、A11、A15、A20", en: "A4, A5, A6, A8, A11, A15, A20" },
+        { zh: "(台製)", ja: "(台湾製)", en: "Taiwan-made" },
+        { zh: "各1", ja: "各1", en: "1 each" },
+      ],
+    ],
+  },
+  {
+    title: { zh: "CNC 車床設備", ja: "CNC旋盤設備", en: "CNC turning equipment" },
+    headers: [
+      { zh: "名稱", ja: "名称", en: "Equipment" },
+      { zh: "規格", ja: "規格", en: "Specification" },
+      { zh: "廠牌型號", ja: "メーカー・型式", en: "Brand / model" },
+      { zh: "數量", ja: "数量", en: "Qty." },
+    ],
+    rows: [
+      [
+        { zh: "CNC車床 V26-1100L（有支持架）", ja: "CNC旋盤 V26-1100L（支持架付き）", en: "CNC lathe V26-1100L (with steady rest)" },
+        { zh: "—", ja: "—", en: "—" },
+        { zh: "台中精機", ja: "台中精機", en: "Victor Taichung" },
+        { zh: "1", ja: "1", en: "1" },
+      ],
+      [
+        { zh: "CNC車床 V36-1250L（有支持架）", ja: "CNC旋盤 V36-1250L（支持架付き）", en: "CNC lathe V36-1250L (with steady rest)" },
+        { zh: "—", ja: "—", en: "—" },
+        { zh: "台中精機", ja: "台中精機", en: "Victor Taichung" },
+        { zh: "1", ja: "1", en: "1" },
+      ],
+    ],
+  },
+]; 
 
 export const applications = [
   { code: "01", title: { zh: "機械工具", ja: "工作機械", en: "Machine tools" }, body: { zh: "主軸、套筒與精密軸件", ja: "主軸、スリーブ、精密軸", en: "Spindles, sleeves, and precision shafts" } },
