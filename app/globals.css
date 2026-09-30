@@ -442,6 +442,9 @@ img { display: block; max-width: 100%; }
 .contact-detail .svg-inline--fa { flex: 0 0 16px; width: 16px; margin-top: 4px; color: var(--orange); }
 .contact-detail[href] { color: var(--orange); }
 .contact-detail[href]:hover { color: #fff; }
+.contact-overseas-note { display: grid; gap: 4px; margin-top: 2px; padding-top: 17px; border-top: 1px solid rgba(255, 255, 255, 0.28); color: rgba(255, 255, 255, 0.78); font-size: 13px; line-height: 1.65; }
+.contact-overseas-note strong { color: var(--orange); font-size: 12px; line-height: 1.4; }
+.contact-overseas-note strong:not(:first-child) { margin-top: 6px; }
 .rfq-form { padding: 32px; background: #e7e7e7; color: var(--ink); }
 .form-heading { display: flex; justify-content: space-between; gap: 18px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
 .form-heading span { color: var(--orange); font-size: 11px; letter-spacing: 0.15em; }

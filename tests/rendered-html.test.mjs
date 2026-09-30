@@ -87,6 +87,11 @@ test("renders every independent company page", async () => {
       assert.match(html, /顯示較早的沿革/);
       assert.match(html, /顯示較晚的沿革/);
     }
+    if (pathname === "/contact") {
+      assert.match(html, /海外／日文聯絡窗口/);
+      assert.match(html, /可使用日文洽談/);
+      assert.match(html, /海外詢價・圖面確認・訂單洽談/);
+    }
     if (pathname === "/cases") {
       assert.match(html, /PRODUCT RANGE \/ 21/i);
       assert.match(html, /product-01\.png/);
