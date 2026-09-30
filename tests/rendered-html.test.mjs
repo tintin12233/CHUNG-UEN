@@ -96,6 +96,9 @@ test("renders every independent company page", async () => {
       assert.match(html, /固定導套座/);
       assert.match(html, /aria-label="固定導套座照片輪播"/);
       assert.match(html, /aria-label="精密軸件照片輪播"/);
+      const productCardBodies = [...html.matchAll(/<div class="product-card-body">([\s\S]*?)<\/div><\/article>/g)];
+      assert.equal(productCardBodies.length, 21);
+      assert.ok(productCardBodies.every((match) => !match[1].includes("<p>")));
       assert.equal((html.match(/class="product-image-carousel-dots"/g) ?? []).length, 4);
       assert.match(html, /class="product-image-gallery product-image-gallery-reserved"/);
       assert.equal((html.match(/class="product-card"/g) ?? []).length, 21);
