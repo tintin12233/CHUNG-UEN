@@ -21,7 +21,7 @@ interface ExecutionContext {
   passThroughOnException(): void;
 }
 
-const CONTACT_RECIPIENT = "tintin12233@gmail.com";
+const CONTACT_RECIPIENT = "chunguen851996@gmail.com";
 const CONTACT_FIELD_LABELS: Array<[keyof ContactFields, string]> = [
   ["topic", "問題分類"],
   ["company", "公司名稱"],

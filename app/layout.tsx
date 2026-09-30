@@ -37,7 +37,7 @@ const structuredData = {
       logo: publicAssetUrl("/images/chy-logo.png"),
       image: socialImage,
       telephone: "+886-4-2676-3118",
-      email: "tintin12233@gmail.com",
+      email: "chunguen851996@gmail.com",
       address: {
         "@type": "PostalAddress",
         addressCountry: "TW",

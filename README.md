@@ -95,7 +95,7 @@ actions tied to the current ChatGPT user. Leave public content anonymous.
 ## Contact form email
 
 The contact form posts to `/api/contact`. The Cloudflare Worker sends the
-formatted inquiry through Resend to `tintin12233@gmail.com`.
+formatted inquiry through Resend to `chunguen851996@gmail.com`.
 
 Before sending real inquiries, verify the sender domain in Resend and set the
 sender address to a verified address, for example:
