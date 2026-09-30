@@ -77,7 +77,7 @@ export const copy: Record<Lang, Record<string, string>> = {
     formButton: "送出詢問",
     formSending: "傳送中...",
     formDone: "詢問已送出，我們會盡快與您聯絡。",
-    formError: "送出失敗，請稍後再試，或直接寄信至 chunguen851996@gmail.com。",
+    formError: "送出失敗，請稍後再試，或直接寄信至 tintin12233@gmail.com。",
     menu: "選單",
     close: "關閉",
     footerDescription: "專注精密研磨，提供穩定可靠的精密零件加工服務。",
@@ -203,7 +203,7 @@ export const copy: Record<Lang, Record<string, string>> = {
     formButton: "Send inquiry",
     formSending: "Sending...",
     formDone: "Your inquiry has been sent. We will be in touch soon.",
-    formError: "Sending failed. Please try again later or email chunguen851996@gmail.com directly.",
+    formError: "Sending failed. Please try again later or email tintin12233@gmail.com directly.",
     menu: "MENU",
     close: "CLOSE",
     footerDescription: "Focused grinding. Dependable precision.",
@@ -762,7 +762,7 @@ function HomeHeader({ lang, setLang }: { lang: Lang; setLang: (lang: Lang) => vo
 
 function HomeFooter({ lang }: { lang: Lang }) {
   const c = copy[lang];
-  return <><ContactCta lang={lang} /><footer className="site-footer"><div className="container footer-main"><div className="footer-company"><h2 className="footer-company-title">長芸有限公司</h2><p>{c.footerDescription}</p></div><div className="footer-contact-section"><h6 className="title"><a href={withRoutePath("/contact")}>{c.footerContact}</a></h6><p><a href="tel:0426763118"><FontAwesomeIcon className="footer-contact-icon" icon={faPhone} aria-hidden="true" />04-26763118</a></p><p><FontAwesomeIcon className="footer-contact-icon" icon={faFax} aria-hidden="true" />04-26763117</p></div><div className="footer-contact footer-address-section"><p><a href="mailto:chunguen851996@gmail.com"><FontAwesomeIcon className="footer-contact-icon" icon={faEnvelope} aria-hidden="true" />chunguen851996@gmail.com</a></p><p className="address-indent"><FontAwesomeIcon className="footer-contact-icon" icon={faLocationDot} aria-hidden="true" /><span>{c.footerAddress}</span></p></div></div><div className="container footer-bottom"><span>© 2026 CHUNG UEN CO., LTD.</span><span>PRECISION GRINDING / TURNING / INSPECTION</span></div></footer></>;
+  return <><ContactCta lang={lang} /><footer className="site-footer"><div className="container footer-main"><div className="footer-company"><h2 className="footer-company-title">長芸有限公司</h2><p>{c.footerDescription}</p></div><div className="footer-contact-section"><h6 className="title"><a href={withRoutePath("/contact")}>{c.footerContact}</a></h6><p><a href="tel:0426763118"><FontAwesomeIcon className="footer-contact-icon" icon={faPhone} aria-hidden="true" />04-26763118</a></p><p><FontAwesomeIcon className="footer-contact-icon" icon={faFax} aria-hidden="true" />04-26763117</p></div><div className="footer-contact footer-address-section"><p><a href="mailto:tintin12233@gmail.com"><FontAwesomeIcon className="footer-contact-icon" icon={faEnvelope} aria-hidden="true" />tintin12233@gmail.com</a></p><p className="address-indent"><FontAwesomeIcon className="footer-contact-icon" icon={faLocationDot} aria-hidden="true" /><span>{c.footerAddress}</span></p></div></div><div className="container footer-bottom"><span>© 2026 CHUNG UEN CO., LTD.</span><span>PRECISION GRINDING / TURNING / INSPECTION</span></div></footer></>;
 }
 
 function HomeAboutSection({ lang }: { lang: Lang }) {

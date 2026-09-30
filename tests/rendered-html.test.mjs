@@ -54,7 +54,7 @@ test("renders every independent company page", async () => {
       assert.match(html, /aria-label="Language selector"/i);
       assert.match(html, /台中市大甲區重義一路151號/);
       assert.match(html, /04-26763117/);
-      assert.match(html, /chunguen851996@gmail\.com/);
+      assert.match(html, /tintin12233@gmail\.com/);
       assert.equal((html.match(/class="home-value-icon"/g) ?? []).length, 0);
       assert.doesNotMatch(html, /核心經營理念/);
       assert.match(html, /加工服務/);
@@ -91,6 +91,8 @@ test("renders every independent company page", async () => {
       assert.match(html, /海外／日文聯絡窗口/);
       assert.match(html, /可使用日文洽談/);
       assert.match(html, /海外詢價・圖面確認・訂單洽談/);
+      assert.match(html, /tintin12233@gmail\.com/);
+      assert.doesNotMatch(html, /chunguen851996@gmail\.com/);
     }
     if (pathname === "/cases") {
       assert.match(html, /PRODUCT RANGE \/ 21/i);
