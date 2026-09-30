@@ -342,7 +342,7 @@ img { display: block; max-width: 100%; }
 .product-image-wrap { position: relative; aspect-ratio: 1.25; overflow: hidden; background: #fff; }
 .product-image { width: 100%; height: 100%; object-fit: contain; padding: 12px; transition: transform 300ms ease; }
 .product-card:hover .product-image { transform: scale(1.03); }
-.product-image-carousel-controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 52px; box-sizing: border-box; padding: 0 12px; }
+.product-image-carousel-controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 40px; box-sizing: border-box; padding: 0 12px; }
 .product-image-carousel-arrow { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid var(--line); background: transparent; color: var(--orange); font-size: 13px; line-height: 1; transition: background 180ms ease, color 180ms ease; }
 .product-image-carousel-arrow:hover { background: var(--orange); color: var(--white); }
 .product-image-carousel-dots { display: flex; align-items: center; justify-content: center; gap: 8px; }
