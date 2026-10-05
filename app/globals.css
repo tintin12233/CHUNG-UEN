@@ -244,7 +244,7 @@ img { display: block; max-width: 100%; }
 .production-process-copy { max-width: 760px; padding-left: 27px; border-left: 1px solid var(--light-line); }
 .production-process-subtitle { margin: 0 0 10px; color: var(--orange); font-size: clamp(16px, 2vw, 24px); font-weight: 700; line-height: 1.45; }
 .production-process-copy > p:last-child { margin: 0; color: rgba(255, 255, 255, 0.66); font-size: 14px; line-height: 1.9; }
-.production-process-meta { display: flex; align-items: center; gap: 13px; margin-top: 32px; color: rgba(255, 255, 255, 0.54); font-size: 10px; letter-spacing: 0.14em; }
+.production-process-meta { display: flex; align-items: center; gap: 13px; margin-top: 32px; color: rgba(255, 255, 255, 0.54); font-size: 12px; letter-spacing: 0.14em; }
 .production-process-meta span:first-child { color: var(--orange); font-weight: 700; }
 .production-process-meta i { width: 58px; height: 1px; background: var(--orange); }
 .production-process-track { display: grid; gap: 22px; margin-top: 38px; }
