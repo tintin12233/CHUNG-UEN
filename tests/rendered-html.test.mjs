@@ -36,6 +36,8 @@ test("renders every independent company page", async () => {
     assert.match(html, /name="description"/i, pathname);
     assert.match(html, /property="og:title"/i, pathname);
     assert.match(html, /application\/ld\+json/i, pathname);
+    assert.match(html, /id="site-preloader"/i, pathname);
+    assert.match(html, /class="site-preloader-line"/i, pathname);
     assert.match(html, /images\/chy-logo\.png/i, pathname);
     assert.match(html, /CHUNG UEN CO\., LTD\./, pathname);
     assert.doesNotMatch(html, /CHUNG YUEN CO\., LTD\.|Chung Yuen/, pathname);
