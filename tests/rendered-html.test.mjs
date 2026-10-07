@@ -95,7 +95,7 @@ test("renders every independent company page", async () => {
       assert.match(html, /tintin12233@gmail\.com/);
     }
     if (pathname === "/cases") {
-      assert.match(html, /PRODUCT RANGE \/ 21/i);
+      assert.match(html, /PRODUCT RANGE \/ 22/i);
       assert.match(html, /product-01\.png/);
       assert.match(html, /product-13\.png/);
       assert.match(html, /product-07\.png/);
@@ -104,11 +104,11 @@ test("renders every independent company page", async () => {
       assert.match(html, /aria-label="固定導套座照片輪播"/);
       assert.match(html, /aria-label="精密軸件照片輪播"/);
       const productCardBodies = [...html.matchAll(/<div class="product-card-body">([\s\S]*?)<\/div><\/article>/g)];
-      assert.equal(productCardBodies.length, 21);
+      assert.equal(productCardBodies.length, 22);
       assert.ok(productCardBodies.every((match) => !match[1].includes("<p>")));
       assert.equal((html.match(/class="product-image-carousel-dots"/g) ?? []).length, 4);
       assert.match(html, /class="product-image-gallery product-image-gallery-reserved"/);
-      assert.equal((html.match(/class="product-card"/g) ?? []).length, 21);
+      assert.equal((html.match(/class="product-card"/g) ?? []).length, 22);
     }
   }
 });
