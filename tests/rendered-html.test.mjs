@@ -99,7 +99,7 @@ test("renders every independent company page", async () => {
       assert.match(html, /product-01\.png/);
       assert.match(html, /product-13\.png/);
       assert.match(html, /product-07\.png/);
-      assert.match(html, /fixed-guide-bushing-seat-01\.png/);
+      assert.match(html, /product-22-custom-01\.png/);
       assert.match(html, /固定導套座/);
       assert.match(html, /aria-label="固定導套座照片輪播"/);
       assert.match(html, /aria-label="精密軸件照片輪播"/);
@@ -107,6 +107,7 @@ test("renders every independent company page", async () => {
       assert.equal(productCardBodies.length, 22);
       assert.ok(productCardBodies.every((match) => !match[1].includes("<p>")));
       assert.equal((html.match(/class="product-image-carousel-dots"/g) ?? []).length, 4);
+      assert.equal((html.match(/class="product-image-carousel-arrow"/g) ?? []).length, 8);
       assert.match(html, /class="product-image-gallery product-image-gallery-reserved"/);
       assert.equal((html.match(/class="product-card"/g) ?? []).length, 22);
     }
