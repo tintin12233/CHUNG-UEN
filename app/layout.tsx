@@ -8,7 +8,9 @@ const homeTitle = "長芸有限公司｜精密研磨、CNC車削與精密機械�
 const homeDescription = "長芸有限公司位於台中，專注於內外徑精密研磨、CNC車削、精密機械零組件與整合加工，服務工作母機、汽車零件及工業設備需求。";
 const organizationId = `${absoluteSiteUrl("/")}#organization`;
 const websiteId = `${absoluteSiteUrl("/")}#website`;
-const preloaderCriticalStyles = `html.site-preloader-active,body.site-preloader-active{overflow:hidden}#site-preloader{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:#121212}`;
+const preloaderSessionKey = "site-preloader-played";
+const preloaderSessionScript = `try{if(window.sessionStorage.getItem("${preloaderSessionKey}")==="true"){document.documentElement.dataset.sitePreloaderSeen="true"}}catch{}`;
+const preloaderCriticalStyles = `html.site-preloader-active,body.site-preloader-active{overflow:hidden}html[data-site-preloader-seen] body.site-preloader-active{overflow:auto}html[data-site-preloader-seen] #site-preloader{display:none!important}#site-preloader{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:#121212}`;
 
 export const metadata: Metadata = {
   ...pageMetadata(homeTitle, homeDescription, "/"),
@@ -62,5 +64,5 @@ const structuredData = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="zh-Hant"><head><style dangerouslySetInnerHTML={{ __html: preloaderCriticalStyles }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} /></head><body className="site-preloader-active"><SitePreloader />{children}</body></html>;
+  return <html lang="zh-Hant"><head><script dangerouslySetInnerHTML={{ __html: preloaderSessionScript }} /><style dangerouslySetInnerHTML={{ __html: preloaderCriticalStyles }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} /></head><body className="site-preloader-active"><SitePreloader />{children}</body></html>;
 }
