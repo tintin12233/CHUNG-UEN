@@ -300,6 +300,9 @@ const qualityGalleryImages: Array<{ src: string; alt: TextValue }> = [
   { src: "/images/quality/052fea87-e39b-44c6-881c-d26d657ece4c.png", alt: { zh: "品質檢驗室與量具收納", ja: "品質検査室と測定具の保管", en: "Quality inspection room and gauge storage" } },
   { src: "/images/quality/inspection-gauge-blocks.png", alt: { zh: "量塊組與木製收納盒", ja: "ブロックゲージセットと木製ケース", en: "Gauge block set in wooden case" } },
   { src: "/images/quality/inspection-dial-caliper-mitutoyo.png", alt: { zh: "Mitutoyo 指針式游標卡尺", ja: "Mitutoyo ダイヤルノギス", en: "Mitutoyo dial caliper" } },
+  { src: "/images/quality/quality-gallery-ring-gauges.png", alt: { zh: "精密環規與成品檢驗", ja: "精密リングゲージと完成品検査", en: "Precision ring gauges and finished-part inspection" } },
+  { src: "/images/quality/quality-gallery-gauge-cases.png", alt: { zh: "量具收納與檢驗工具", ja: "測定具の収納と検査工具", en: "Gauge cases and inspection tools" } },
+  { src: "/images/quality/quality-gallery-inspection-cabinet.png", alt: { zh: "品質檢驗櫃與量測設備", ja: "品質検査キャビネットと測定設備", en: "Quality inspection cabinet and measuring equipment" } },
 ];
 
 const qualityProcessTitle: TextValue = { zh: "品質檢驗流程", ja: "品質検査工程", en: "Quality control process" };
@@ -454,7 +457,7 @@ function QualityPage() {
     </div>
     <div className="quality-gallery-band">
       <div className="container">
-        <QualitySectionHeading title={text(qualityGalleryTitle, lang)} english="QUALITY / 15" light />
+        <QualitySectionHeading title={text(qualityGalleryTitle, lang)} english="QUALITY / 18" light />
         <p className="quality-gallery-intro">{text(qualityGalleryBody, lang)}</p>
         <div className="quality-gallery" aria-label={lang === "zh" ? "品質檢驗照片" : lang === "ja" ? "品質検査写真" : "Quality inspection photos"}>{qualityGalleryImages.map((image) => <figure key={image.src}><img src={withBasePath(image.src)} alt={text(image.alt, lang)} /></figure>)}</div>
       </div>
