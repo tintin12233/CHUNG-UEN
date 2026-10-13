@@ -245,7 +245,7 @@ const equipmentGalleryImages: Array<{ src: string; label: TextValue }> = [
   { src: "/images/equipment/equipment-04.png", label: { zh: "大型精密研磨設備", ja: "大型精密研削設備", en: "Large precision grinding equipment" } },
   { src: "/images/equipment/equipment-05.png", label: { zh: "CNC 車削設備", ja: "CNC旋盤設備", en: "CNC turning equipment" } },
   { src: "/images/equipment/equipment-06.png", label: { zh: "工廠生產線", ja: "工場の生産ライン", en: "Factory production floor" } },
-  { src: "/images/equipment/equipment-07.png", label: { zh: "CNC 研磨設備", ja: "CNC研削設備", en: "CNC grinding equipment" } },
+  { src: "/images/equipment/equipment-07.png", label: { zh: "CNC內外徑複合式磨床", ja: "CNC研削設備", en: "CNC grinding equipment" } },
   { src: "/images/equipment/equipment-08.png", label: { zh: "研磨加工現場", ja: "研削加工の現場", en: "Grinding operation" } },
   { src: "/images/equipment/equipment-09.png", label: { zh: "傳統研磨設備", ja: "従来型研削設備", en: "Conventional grinding equipment" } },
   { src: "/images/equipment/equipment-10-vturn-26.png", label: { zh: "CNC 車削 Vturn-26", ja: "CNC旋盤 Vturn-26", en: "CNC turning — Vturn-26" } },
