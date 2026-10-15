@@ -1,26 +1,21 @@
 "use client";
 
-import { createContext, ReactNode, useContext, useState } from "react";
+import { ReactNode, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faEnvelope, faFax, faLocationDot, faPhone, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { ContactCta, Lang, navItems, text } from "@/app/page";
+import { ContactCta, navItems, text } from "@/app/page";
 import { withBasePath, withRoutePath } from "@/app/components/site-paths";
+import { useSiteLang, type Lang } from "@/app/components/site-language";
+
+export { useSiteLang } from "@/app/components/site-language";
 
 const languages: { key: Lang; label: string }[] = [
   { key: "zh", label: "中" },
   { key: "ja", label: "日" },
   { key: "en", label: "EN" },
 ];
-
-const LanguageContext = createContext<{ lang: Lang; setLang: (lang: Lang) => void } | null>(null);
-
-export function useSiteLang() {
-  const context = useContext(LanguageContext);
-  if (!context) throw new Error("useSiteLang must be used inside SitePage");
-  return context;
-}
 
 function SiteHeader() {
   const { lang, setLang } = useSiteLang();
@@ -37,8 +32,8 @@ function SiteFooter() {
 }
 
 export function SitePage({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>("zh");
-  return <LanguageContext.Provider value={{ lang, setLang }}><div className="site-shell"><SiteHeader /><main>{children}</main><ContactCta lang={lang} /><SiteFooter /></div></LanguageContext.Provider>;
+  const { lang } = useSiteLang();
+  return <div className="site-shell"><SiteHeader /><main>{children}</main><ContactCta lang={lang} /><SiteFooter /></div>;
 }
 
 export function PageHero({ index, eyebrow, title, body }: { index: string; eyebrow: string; title: string; body: string }) {
