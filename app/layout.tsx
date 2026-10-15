@@ -10,6 +10,7 @@ const organizationId = `${absoluteSiteUrl("/")}#organization`;
 const websiteId = `${absoluteSiteUrl("/")}#website`;
 const preloaderSessionKey = "site-preloader-played";
 const preloaderSessionScript = `try{if(window.sessionStorage.getItem("${preloaderSessionKey}")==="true"){document.documentElement.dataset.sitePreloaderSeen="true"}}catch{}`;
+const siteLanguageScript = `try{const l=window.localStorage.getItem("site-language");document.documentElement.dataset.siteLanguage=l==="ja"||l==="en"?l:"zh"}catch{document.documentElement.dataset.siteLanguage="zh"}`;
 const preloaderCriticalStyles = `html.site-preloader-active,body.site-preloader-active{overflow:hidden}html[data-site-preloader-seen] body.site-preloader-active{overflow:auto}html[data-site-preloader-seen] #site-preloader{display:none!important}#site-preloader{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:#121212}`;
 
 export const metadata: Metadata = {
@@ -64,5 +65,5 @@ const structuredData = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="zh-Hant"><head><script dangerouslySetInnerHTML={{ __html: preloaderSessionScript }} /><style dangerouslySetInnerHTML={{ __html: preloaderCriticalStyles }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} /></head><body className="site-preloader-active"><SitePreloader />{children}</body></html>;
+  return <html lang="zh-Hant"><head><script dangerouslySetInnerHTML={{ __html: preloaderSessionScript }} /><script dangerouslySetInnerHTML={{ __html: siteLanguageScript }} /><style dangerouslySetInnerHTML={{ __html: preloaderCriticalStyles }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} /></head><body className="site-preloader-active"><SitePreloader />{children}</body></html>;
 }

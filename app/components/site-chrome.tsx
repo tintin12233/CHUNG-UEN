@@ -33,7 +33,7 @@ function SiteFooter() {
 
 export function SitePage({ children }: { children: ReactNode }) {
   const { lang } = useSiteLang();
-  return <div className="site-shell"><SiteHeader /><main>{children}</main><ContactCta lang={lang} /><SiteFooter /></div>;
+  return <div className="site-shell" data-site-lang={lang}><SiteHeader /><main>{children}</main><ContactCta lang={lang} /><SiteFooter /></div>;
 }
 
 export function PageHero({ index, eyebrow, title, body }: { index: string; eyebrow: string; title: string; body: string }) {

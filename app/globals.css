@@ -45,6 +45,8 @@ body.site-preloader-complete .hero-section { animation: site-preloader-hero-in 5
 }
 
 .site-shell { min-width: 320px; overflow: hidden; }
+html[data-site-language="ja"] .site-shell:not([data-site-lang="ja"]),
+html[data-site-language="en"] .site-shell:not([data-site-lang="en"]) { visibility: hidden; }
 .container { width: min(1400px, calc(100% - 96px)); margin: 0 auto; }
 .nav-inner > *,
 .section-intro > *,

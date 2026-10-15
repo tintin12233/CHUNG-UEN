@@ -22,11 +22,16 @@ function readStoredLang(): Lang {
 }
 
 function subscribeToLangChanges(onChange: () => void) {
-  window.addEventListener("storage", onChange);
-  window.addEventListener(SITE_LANGUAGE_CHANGE_EVENT, onChange);
+  const syncLanguage = () => {
+    document.documentElement.dataset.siteLanguage = readStoredLang();
+    onChange();
+  };
+
+  window.addEventListener("storage", syncLanguage);
+  window.addEventListener(SITE_LANGUAGE_CHANGE_EVENT, syncLanguage);
   return () => {
-    window.removeEventListener("storage", onChange);
-    window.removeEventListener(SITE_LANGUAGE_CHANGE_EVENT, onChange);
+    window.removeEventListener("storage", syncLanguage);
+    window.removeEventListener(SITE_LANGUAGE_CHANGE_EVENT, syncLanguage);
   };
 }
 
@@ -39,6 +44,7 @@ export function useSiteLang() {
 
   const setLang = useCallback((nextLang: Lang) => {
     fallbackLang = nextLang;
+    document.documentElement.dataset.siteLanguage = nextLang;
     try {
       window.localStorage.setItem(SITE_LANGUAGE_STORAGE_KEY, nextLang);
     } catch {
