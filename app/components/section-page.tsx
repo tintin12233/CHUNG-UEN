@@ -9,6 +9,9 @@ import { withBasePath, withRoutePath } from "@/app/components/site-paths";
 
 export type SectionKind = "about" | "services" | "capacity" | "equipment" | "cases" | "quality" | "industries" | "contact";
 
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const WEB3FORMS_ACCESS_KEY = "537c576f-7247-4e3b-9489-1403869619b3";
+
 const pageMeta: Record<SectionKind, { index: string; eyebrow: keyof typeof copy.zh; title: keyof typeof copy.zh; body: keyof typeof copy.zh }> = {
   about: { index: "01", eyebrow: "aboutEyebrow", title: "aboutTitle", body: "aboutBody" },
   services: { index: "02", eyebrow: "serviceEyebrow", title: "serviceTitle", body: "serviceBody" },
@@ -507,14 +510,18 @@ function ContactPage() {
     setFormStatus("sending");
 
     try {
-      const payload = Object.fromEntries(new FormData(form).entries());
-      const response = await fetch(withBasePath("/api/contact"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...payload, lang }),
-      });
+      const formData = new FormData(form);
+      formData.set("access_key", WEB3FORMS_ACCESS_KEY);
+      formData.set("subject", `Website inquiry / ${lang.toUpperCase()}`);
+      formData.set("from_name", "CHUNG UEN Website");
 
-      if (!response.ok) {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json().catch(() => null) as { success?: boolean; message?: string } | null;
+
+      if (!response.ok || data?.success === false) {
         throw new Error("Contact form submission failed");
       }
 
@@ -535,7 +542,7 @@ function ContactPage() {
     setTitle("mr");
     setFormStatus("idle");
   };
-  return <section className="section dark-section"><div className="container"><SectionIntro eyebrow={c.contactEyebrow} title={c.contactTitle} body={c.contactBody} /><div className="contact-layout"><aside className="contact-card"><h3>長芸有限公司</h3><div className="contact-details"><p className="contact-detail"><FontAwesomeIcon icon={faUser} aria-hidden="true" /><span>聯絡人:  陳總經理</span></p><a className="contact-detail" href="tel:0426763118"><FontAwesomeIcon icon={faPhone} aria-hidden="true" /><span>04-26763118</span></a><p className="contact-detail"><FontAwesomeIcon icon={faFax} aria-hidden="true" /><span>04-26763117</span></p><a className="contact-detail" href="mailto:chunguen851996@gmail.com"><FontAwesomeIcon icon={faEnvelope} aria-hidden="true" /><span>chunguen851996@gmail.com</span></a><p className="contact-detail"><FontAwesomeIcon icon={faLocationDot} aria-hidden="true" /><span>台中市大甲區重義一路151號</span></p></div><div className="contact-overseas-note"><p className="contact-overseas-item"><FontAwesomeIcon icon={faGlobe} aria-hidden="true" /><span><strong>海外／日文聯絡窗口</strong></span></p><p className="contact-overseas-item"><FontAwesomeIcon icon={faUser} aria-hidden="true" /><span>陳小姐</span></p><a className="contact-overseas-item" href="mailto:tintin12233@gmail.com"><FontAwesomeIcon icon={faEnvelope} aria-hidden="true" /><span>tintin12233@gmail.com</span></a><p className="contact-overseas-item"><FontAwesomeIcon icon={faLanguage} aria-hidden="true" /><span><strong>可使用日文洽談</strong></span></p><p className="contact-overseas-item"><FontAwesomeIcon icon={faFileLines} aria-hidden="true" /><span>海外詢價・圖面確認・訂單洽談</span></p></div><div className="contact-location"><div className="contact-location-heading"><span>LOCATION</span><strong>{lang === "zh" ? "公司位置" : lang === "ja" ? "所在地" : "Our location"}</strong></div><div className="contact-map-frame"><iframe title={lang === "zh" ? "長芸有限公司位置地圖" : lang === "ja" ? "長芸有限公司の所在地地図" : "Chung Uen location map"} src={companyMapEmbedUrl} loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen /></div><a className="contact-map-link" href={companyMapLink} target="_blank" rel="noreferrer">{lang === "zh" ? "開啟導航" : lang === "ja" ? "Googleマップで開く" : "Open in Google Maps"}<span className="button-icon" aria-hidden="true"><FontAwesomeIcon icon={faArrowRight} /></span></a></div></aside><form className="rfq-form" onSubmit={handleSubmit}><div className="form-heading"><span>RFQ / 01</span><strong>{lang === "zh" ? "聯絡表單" : lang === "ja" ? "お問い合わせフォーム" : "Contact form"}</strong></div><div className="form-grid">
+  return <section className="section dark-section"><div className="container"><SectionIntro eyebrow={c.contactEyebrow} title={c.contactTitle} body={c.contactBody} /><div className="contact-layout"><aside className="contact-card"><h3>長芸有限公司</h3><div className="contact-details"><p className="contact-detail"><FontAwesomeIcon icon={faUser} aria-hidden="true" /><span>聯絡人:  陳總經理</span></p><a className="contact-detail" href="tel:0426763118"><FontAwesomeIcon icon={faPhone} aria-hidden="true" /><span>04-26763118</span></a><p className="contact-detail"><FontAwesomeIcon icon={faFax} aria-hidden="true" /><span>04-26763117</span></p><a className="contact-detail" href="mailto:chunguen851996@gmail.com"><FontAwesomeIcon icon={faEnvelope} aria-hidden="true" /><span>chunguen851996@gmail.com</span></a><p className="contact-detail"><FontAwesomeIcon icon={faLocationDot} aria-hidden="true" /><span>台中市大甲區重義一路151號</span></p></div><div className="contact-overseas-note"><p className="contact-overseas-item"><FontAwesomeIcon icon={faGlobe} aria-hidden="true" /><span><strong>海外／日文聯絡窗口</strong></span></p><p className="contact-overseas-item"><FontAwesomeIcon icon={faUser} aria-hidden="true" /><span>陳小姐</span></p><a className="contact-overseas-item" href="mailto:tintin12233@gmail.com"><FontAwesomeIcon icon={faEnvelope} aria-hidden="true" /><span>tintin12233@gmail.com</span></a><p className="contact-overseas-item"><FontAwesomeIcon icon={faLanguage} aria-hidden="true" /><span><strong>可使用日文洽談</strong></span></p><p className="contact-overseas-item"><FontAwesomeIcon icon={faFileLines} aria-hidden="true" /><span>海外詢價・圖面確認・訂單洽談</span></p></div><div className="contact-location"><div className="contact-location-heading"><span>LOCATION</span><strong>{lang === "zh" ? "公司位置" : lang === "ja" ? "所在地" : "Our location"}</strong></div><div className="contact-map-frame"><iframe title={lang === "zh" ? "長芸有限公司位置地圖" : lang === "ja" ? "長芸有限公司の所在地地圖" : "Chung Uen location map"} src={companyMapEmbedUrl} loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen /></div><a className="contact-map-link" href={companyMapLink} target="_blank" rel="noreferrer">{lang === "zh" ? "開啟導航" : lang === "ja" ? "Googleマップで開く" : "Open in Google Maps"}<span className="button-icon" aria-hidden="true"><FontAwesomeIcon icon={faArrowRight} /></span></a></div></aside><form className="rfq-form" action={WEB3FORMS_ENDPOINT} method="POST" onSubmit={handleSubmit}><input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} /><input type="hidden" name="subject" value={`Website inquiry / ${lang.toUpperCase()}`} /><input type="hidden" name="from_name" value="CHUNG UEN Website" /><div className="form-heading"><span>RFQ / 01</span><strong>{lang === "zh" ? "聯絡表單" : lang === "ja" ? "お問い合わせフォーム" : "Contact form"}</strong></div><div className="form-grid">
     <label className="form-wide"><span>{formCopy.topic} <b aria-hidden="true">*</b></span><select name="topic" required defaultValue=""><option value="" disabled>{formCopy.topicPlaceholder}</option>{contactIssues.map((issue) => <option key={issue.value} value={issue.value}>{issue.label[lang]}</option>)}</select></label>
     <label className="form-wide"><span>{formCopy.company}</span><input name="company" type="text" placeholder={formCopy.company} /></label>
     <label><span>{formCopy.name} <b aria-hidden="true">*</b></span><input name="name" required type="text" placeholder={`* ${formCopy.name}`} /></label>
