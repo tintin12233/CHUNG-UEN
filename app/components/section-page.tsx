@@ -243,10 +243,10 @@ function CapacityPage() {
 }
 
 const equipmentGalleryImages: Array<{ src: string; label: TextValue }> = [
-  { src: "/images/equipment/equipment-04.png", label: { zh: "大型精密研磨設備", ja: "大型精密研削設備", en: "Large precision grinding equipment" } },
-  { src: "/images/equipment/equipment-02.png", label: { zh: "圓筒研磨設備", ja: "円筒研削設備", en: "Cylindrical grinding equipment" } },
+  { src: "/images/equipment/equipment-04.png", label: { zh: "CNC圓筒磨床", ja: "CNC円筒研削盤", en: "CNC cylindrical grinder" } },
+  { src: "/images/equipment/equipment-02.png", label: { zh: "CNC圓筒磨床", ja: "CNC円筒研削盤", en: "CNC cylindrical grinder" } },
   { src: "/images/equipment/equipment-03.png", label: { zh: "軸件精密研磨", ja: "軸部品の精密研削", en: "Precision shaft grinding" } },
-  { src: "/images/equipment/equipment-01.png", label: { zh: "立式加工設備", ja: "立形加工設備", en: "Vertical machining equipment" } },
+  { src: "/images/equipment/equipment-01.png", label: { zh: "中心孔磨床", ja: "センター穴研削盤", en: "Center hole grinder" } },
   { src: "/images/equipment/equipment-05.png", label: { zh: "CNC內外徑複合式磨床", ja: "CNC内外径複合研削盤", en: "CNC internal/external cylindrical grinder" } },
   { src: "/images/equipment/equipment-06.png", label: { zh: "工廠生產線", ja: "工場の生産ライン", en: "Factory production floor" } },
   { src: "/images/equipment/equipment-07.png", label: { zh: "CNC內外徑複合式磨床", ja: "CNC研削設備", en: "CNC grinding equipment" } },
