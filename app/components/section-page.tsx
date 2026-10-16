@@ -243,17 +243,17 @@ function CapacityPage() {
 }
 
 const equipmentGalleryImages: Array<{ src: string; label: TextValue }> = [
-  { src: "/images/equipment/equipment-01.png", label: { zh: "立式加工設備", ja: "立形加工設備", en: "Vertical machining equipment" } },
+  { src: "/images/equipment/equipment-04.png", label: { zh: "大型精密研磨設備", ja: "大型精密研削設備", en: "Large precision grinding equipment" } },
   { src: "/images/equipment/equipment-02.png", label: { zh: "圓筒研磨設備", ja: "円筒研削設備", en: "Cylindrical grinding equipment" } },
   { src: "/images/equipment/equipment-03.png", label: { zh: "軸件精密研磨", ja: "軸部品の精密研削", en: "Precision shaft grinding" } },
-  { src: "/images/equipment/equipment-04.png", label: { zh: "大型精密研磨設備", ja: "大型精密研削設備", en: "Large precision grinding equipment" } },
-  { src: "/images/equipment/equipment-05.png", label: { zh: "CNC 車削設備", ja: "CNC旋盤設備", en: "CNC turning equipment" } },
+  { src: "/images/equipment/equipment-01.png", label: { zh: "立式加工設備", ja: "立形加工設備", en: "Vertical machining equipment" } },
+  { src: "/images/equipment/equipment-05.png", label: { zh: "CNC內外徑複合式磨床", ja: "CNC内外径複合研削盤", en: "CNC internal/external cylindrical grinder" } },
   { src: "/images/equipment/equipment-06.png", label: { zh: "工廠生產線", ja: "工場の生産ライン", en: "Factory production floor" } },
   { src: "/images/equipment/equipment-07.png", label: { zh: "CNC內外徑複合式磨床", ja: "CNC研削設備", en: "CNC grinding equipment" } },
-  { src: "/images/equipment/equipment-08.png", label: { zh: "研磨加工現場", ja: "研削加工の現場", en: "Grinding operation" } },
+  { src: "/images/equipment/equipment-08.png", label: { zh: "萬能圓筒磨床", ja: "万能円筒研削盤", en: "Universal cylindrical grinder" } },
   { src: "/images/equipment/equipment-09.png", label: { zh: "傳統研磨設備", ja: "従来型研削設備", en: "Conventional grinding equipment" } },
-  { src: "/images/equipment/equipment-10-vturn-26.png", label: { zh: "CNC 車削 Vturn-26", ja: "CNC旋盤 Vturn-26", en: "CNC turning — Vturn-26" } },
-  { src: "/images/equipment/equipment-11-vturn-26-material-staging.png", label: { zh: "CNC 車削與備料區", ja: "CNC旋盤と材料準備エリア", en: "CNC turning and material staging" } },
+  { src: "/images/equipment/equipment-10-vturn-26.png", label: { zh: "CNC車床(V26-1100L)", ja: "CNC旋盤（V26-1100L）", en: "CNC lathe (V26-1100L)" } },
+  { src: "/images/equipment/equipment-11-vturn-26-material-staging.png", label: { zh: "CNC車床(V36-1250L)", ja: "CNC旋盤（V36-1250L）", en: "CNC lathe (V36-1250L)" } },
   { src: "/images/equipment/equipment-12.jpg", label: { zh: "SHIGIYA 研磨設備", ja: "SHIGIYA研削設備", en: "SHIGIYA grinding equipment" } },
 ];
 
