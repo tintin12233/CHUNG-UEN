@@ -109,8 +109,8 @@ test("renders every independent company page", async () => {
       const productCardBodies = [...html.matchAll(/<div class="product-card-body">([\s\S]*?)<\/div><\/article>/g)];
       assert.equal(productCardBodies.length, 22);
       assert.ok(productCardBodies.every((match) => !match[1].includes("<p>")));
-      assert.equal((html.match(/class="product-image-carousel-dots"/g) ?? []).length, 6);
-      assert.equal((html.match(/class="product-image-carousel-arrow"/g) ?? []).length, 12);
+      assert.equal((html.match(/class="product-image-carousel-dots"/g) ?? []).length, 7);
+      assert.equal((html.match(/class="product-image-carousel-arrow"/g) ?? []).length, 14);
       assert.match(html, /class="product-image-gallery product-image-gallery-reserved"/);
       assert.equal((html.match(/class="product-card"/g) ?? []).length, 22);
     }
