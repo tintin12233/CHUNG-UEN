@@ -137,7 +137,7 @@ function ProductionProcess({ lang }: { lang: "zh" | "ja" | "en" }) {
 function ServicesPage() {
   const { lang } = useSiteLang();
   const c = copy[lang];
-  return <section className="section dark-section services-section"><div className="container"><div className="section-intro"><p className="eyebrow">{c.serviceEyebrow}</p></div><div className="service-grid">{services.map((service) => <article className={`service-card ${service.image ? "service-card-with-image" : ""}`} key={service.number}><div className="service-top"><span>{service.number}</span></div>{service.image && <div className="service-card-image"><img src={withBasePath(service.image)} alt={text(service.title, lang)} /></div>}<h3>{text(service.title, lang)}</h3><p>{text(service.body, lang)}</p><span className="service-tag">{text(service.tags, lang)}</span></article>)}</div><div className="process-line"><span>DRAWING</span><i /><span>PROCESS</span><i /><span>FINISHED PART</span></div><ProductionProcess lang={lang} /></div></section>;
+  return <section className="section services-section"><div className="container"><div className="section-intro"><p className="eyebrow">{c.serviceEyebrow}</p></div><div className="service-grid">{services.map((service) => <article className={`service-card ${service.image ? "service-card-with-image" : ""}`} key={service.number}><div className="service-top"><span>{service.number}</span></div>{service.image && <div className="service-card-image"><img src={withBasePath(service.image)} alt={text(service.title, lang)} /></div>}<h3>{text(service.title, lang)}</h3><p>{text(service.body, lang)}</p><span className="service-tag">{text(service.tags, lang)}</span></article>)}</div><div className="process-line"><span>DRAWING</span><i /><span>PROCESS</span><i /><span>FINISHED PART</span></div><ProductionProcess lang={lang} /></div></section>;
 }
 
 const capacitySpecGroups: Array<{ title: TextValue; items: Array<{ label: TextValue; value: string }> }> = [
@@ -188,6 +188,14 @@ const capacityVideos: Array<{ code: string; title: TextValue; detail: TextValue;
     type: "video/mp4",
     format: "MP4",
   },
+  {
+    code: "04",
+    title: { zh: "加工現場實錄", ja: "加工現場の様子", en: "Shop floor footage" },
+    detail: { zh: "加工現場的實際作業畫面。", ja: "加工現場の作業風景をご覧いただけます。", en: "A look at the work taking place on the shop floor." },
+    src: "/videos/capacity-process-04.mp4",
+    type: "video/mp4",
+    format: "MP4",
+  },
 ];
 
 function CapacityPage() {
@@ -216,7 +224,7 @@ function CapacityPage() {
       <div className="capacity-video-section">
         <div className="capacity-video-heading">
           <div>
-            <p className="section-eyebrow">SHOP FLOOR / 03</p>
+            <p className="section-eyebrow">SHOP FLOOR / 04</p>
             <h3>{lang === "zh" ? "加工現場影片" : lang === "ja" ? "加工現場の映像" : "Machining in motion"}</h3>
           </div>
           <p>{lang === "zh" ? "透過現場影片了解本廠的加工設備與實際作業方式。" : lang === "ja" ? "現場映像を通して、当社の加工設備と実際の作業をご覧いただけます。" : "See the equipment and working methods behind our machining capacity."}</p>
