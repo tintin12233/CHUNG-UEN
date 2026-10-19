@@ -308,8 +308,8 @@ html[data-site-language="en"] .site-shell:not([data-site-lang="en"]) { visibilit
 .capacity-video-heading > p { max-width: 520px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.9; }
 .capacity-video-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 34px; }
 .capacity-video-card { min-width: 0; overflow: hidden; border: 1px solid var(--line); background: var(--charcoal); color: var(--white); }
-.capacity-video-frame { aspect-ratio: 16 / 9; overflow: hidden; background: #080a0b; }
-.capacity-video-frame video { display: block; width: 100%; height: 100%; object-fit: cover; background: #080a0b; }
+.capacity-video-frame { overflow: hidden; background: #080a0b; }
+.capacity-video-frame video { display: block; width: 100%; height: auto; object-fit: contain; background: #080a0b; }
 .capacity-video-card-copy { padding: 20px 22px 23px; }
 .capacity-video-card-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--orange); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; }
 .capacity-video-card-meta span:last-child { color: rgba(255, 255, 255, 0.48); }
