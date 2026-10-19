@@ -253,16 +253,20 @@ function CapacityPage() {
 const equipmentGalleryImages: Array<{ src: string; label: TextValue }> = [
   { src: "/images/equipment/equipment-04.png", label: { zh: "CNC圓筒磨床", ja: "CNC円筒研削盤", en: "CNC cylindrical grinder" } },
   { src: "/images/equipment/equipment-02.png", label: { zh: "CNC圓筒磨床", ja: "CNC円筒研削盤", en: "CNC cylindrical grinder" } },
-  { src: "/images/equipment/equipment-03.png", label: { zh: "軸件精密研磨", ja: "軸部品の精密研削", en: "Precision shaft grinding" } },
+  { src: "/images/equipment/equipment-03.png", label: { zh: "萬能圓筒磨床", ja: "万能円筒研削盤", en: "Universal cylindrical grinder" } },
   { src: "/images/equipment/equipment-01.png", label: { zh: "中心孔磨床", ja: "センター穴研削盤", en: "Center hole grinder" } },
   { src: "/images/equipment/equipment-05.png", label: { zh: "CNC內外徑複合式磨床", ja: "CNC内外径複合研削盤", en: "CNC internal/external cylindrical grinder" } },
   { src: "/images/equipment/equipment-06.png", label: { zh: "工廠生產線", ja: "工場の生産ライン", en: "Factory production floor" } },
   { src: "/images/equipment/equipment-07.png", label: { zh: "CNC內外徑複合式磨床", ja: "CNC研削設備", en: "CNC grinding equipment" } },
-  { src: "/images/equipment/equipment-08.png", label: { zh: "萬能圓筒磨床", ja: "万能円筒研削盤", en: "Universal cylindrical grinder" } },
-  { src: "/images/equipment/equipment-09.png", label: { zh: "傳統研磨設備", ja: "従来型研削設備", en: "Conventional grinding equipment" } },
+  { src: "/images/equipment/equipment-08.png", label: { zh: "圓筒磨床", ja: "円筒研削盤", en: "Cylindrical grinder" } },
+  { src: "/images/equipment/equipment-09.png", label: { zh: "萬能圓筒磨床", ja: "万能円筒研削盤", en: "Universal cylindrical grinder" } },
   { src: "/images/equipment/equipment-10-vturn-26.png", label: { zh: "CNC車床(V26-1100L)", ja: "CNC旋盤（V26-1100L）", en: "CNC lathe (V26-1100L)" } },
   { src: "/images/equipment/equipment-11-vturn-26-material-staging.png", label: { zh: "CNC車床(V36-1250L)", ja: "CNC旋盤（V36-1250L）", en: "CNC lathe (V36-1250L)" } },
   { src: "/images/equipment/equipment-12.jpg", label: { zh: "SHIGIYA 研磨設備", ja: "SHIGIYA研削設備", en: "SHIGIYA grinding equipment" } },
+  { src: "/images/equipment/equipment-13.png", label: { zh: "YSG-1228S 磨床", ja: "YSG-1228S 研削盤", en: "YSG-1228S grinding machine" } },
+  { src: "/images/equipment/equipment-14.png", label: { zh: "SEIKI 研磨設備", ja: "SEIKI研削設備", en: "SEIKI grinding equipment" } },
+  { src: "/images/equipment/equipment-15.png", label: { zh: "PALMARY 研磨設備", ja: "PALMARY研削設備", en: "PALMARY grinding equipment" } },
+  { src: "/images/equipment/equipment-16.png", label: { zh: "PALMARY IG-150E 研磨設備", ja: "PALMARY IG-150E 研削設備", en: "PALMARY IG-150E grinding machine" } },
 ];
 
 const equipmentGalleryTitle: TextValue = { zh: "設備現場照片", ja: "設備現場の写真", en: "Inside the equipment floor" };
@@ -275,7 +279,7 @@ function EquipmentPage() {
 }
 
 function EquipmentGallery({ lang }: { lang: "zh" | "ja" | "en" }) {
-  return <div className="equipment-gallery-section"><div className="equipment-gallery-heading"><div><p className="section-eyebrow">EQUIPMENT / 12</p><h3>{text(equipmentGalleryTitle, lang)}</h3></div><p>{text(equipmentGalleryBody, lang)}</p></div><div className="equipment-gallery" aria-label={lang === "zh" ? "設備介紹照片" : lang === "ja" ? "設備紹介写真" : "Equipment gallery"}>{equipmentGalleryImages.map((image, index) => <figure key={image.src}><div className="equipment-gallery-image"><img src={withBasePath(image.src)} alt={text(image.label, lang)} /></div><figcaption><span>{String(index + 1).padStart(2, "0")}</span><strong>{text(image.label, lang)}</strong></figcaption></figure>)}</div></div>;
+  return <div className="equipment-gallery-section"><div className="equipment-gallery-heading"><div><p className="section-eyebrow">EQUIPMENT / 16</p><h3>{text(equipmentGalleryTitle, lang)}</h3></div><p>{text(equipmentGalleryBody, lang)}</p></div><div className="equipment-gallery" aria-label={lang === "zh" ? "設備介紹照片" : lang === "ja" ? "設備紹介写真" : "Equipment gallery"}>{equipmentGalleryImages.map((image, index) => <figure key={image.src}><div className="equipment-gallery-image"><img src={withBasePath(image.src)} alt={text(image.label, lang)} /></div><figcaption><span>{String(index + 1).padStart(2, "0")}</span><strong>{text(image.label, lang)}</strong></figcaption></figure>)}</div></div>;
 }
 
 function ProductImageGallery({ product, lang }: { product: ProductEntry; lang: "zh" | "ja" | "en" }) {
