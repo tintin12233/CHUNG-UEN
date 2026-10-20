@@ -197,6 +197,14 @@ const capacityVideos: Array<{ code: string; title: TextValue; detail: TextValue;
     type: "video/mp4",
     format: "MP4",
   },
+  {
+    code: "05",
+    title: { zh: "加工現場實錄 05", ja: "加工現場の様子 05", en: "Shop floor footage 05" },
+    detail: { zh: "新增的加工現場影片紀錄。", ja: "新たに追加した加工現場の記録映像です。", en: "New footage from the machining floor." },
+    src: "/videos/capacity-process-05.mp4",
+    type: "video/mp4",
+    format: "MP4",
+  },
 ];
 
 function CapacityPage() {
@@ -225,7 +233,7 @@ function CapacityPage() {
       <div className="capacity-video-section">
         <div className="capacity-video-heading">
           <div>
-            <p className="section-eyebrow">SHOP FLOOR / 04</p>
+            <p className="section-eyebrow">SHOP FLOOR / 05</p>
             <h3>{lang === "zh" ? "加工現場影片" : lang === "ja" ? "加工現場の映像" : "Machining in motion"}</h3>
           </div>
           <p>{lang === "zh" ? "透過現場影片了解本廠的加工設備與實際作業方式。" : lang === "ja" ? "現場映像を通して、当社の加工設備と実際の作業をご覧いただけます。" : "See the equipment and working methods behind our machining capacity."}</p>
