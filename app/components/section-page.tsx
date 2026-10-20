@@ -325,7 +325,7 @@ const qualityGalleryImages: Array<{ src: string; alt: TextValue }> = [
   { src: "/images/quality/052fea87-e39b-44c6-881c-d26d657ece4c.png", alt: { zh: "品質檢驗室與量具收納", ja: "品質検査室と測定具の保管", en: "Quality inspection room and gauge storage" } },
   { src: "/images/quality/inspection-gauge-blocks.png", alt: { zh: "量塊組與木製收納盒", ja: "ブロックゲージセットと木製ケース", en: "Gauge block set in wooden case" } },
   { src: "/images/quality/inspection-dial-caliper-mitutoyo.png", alt: { zh: "Mitutoyo 指針式游標卡尺", ja: "Mitutoyo ダイヤルノギス", en: "Mitutoyo dial caliper" } },
-  { src: "/images/quality/quality-gallery-gauge-cases.png", alt: { zh: "量具收納與檢驗工具", ja: "測定具の収納と検査工具", en: "Gauge cases and inspection tools" } },
+  { src: "/images/quality/quality-gallery-gauge-cases.png", alt: { zh: "Mahr 數位游標卡尺與收納盒", ja: "Mahr デジタルノギスと収納ケース", en: "Mahr digital caliper and storage case" } },
   { src: "/images/quality/quality-gallery-inspection-cabinet.png", alt: { zh: "品質檢驗櫃與量測設備", ja: "品質検査キャビネットと測定設備", en: "Quality inspection cabinet and measuring equipment" } },
 ];
 
