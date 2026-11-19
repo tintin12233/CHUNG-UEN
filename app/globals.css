@@ -105,6 +105,12 @@ html[data-site-language="en"] .site-shell:not([data-site-lang="en"]) { visibilit
 .button-icon { display: inline-flex; align-items: center; justify-content: center; }
 .button-icon .svg-inline--fa { width: 1em; height: 1em; }
 .hero-button:hover { background: var(--orange); color: #fff; transform: translateY(-2px); }
+.hero-inquiry-button { margin-left: 14px; }
+.service-inquiry-links { display: flex; flex-wrap: wrap; gap: 16px 28px; margin-top: 26px; }
+.service-inquiry-links a, .drawing-inquiry a { color: var(--orange); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.drawing-inquiry { margin: 20px 0; }
+.drawing-inquiry p { margin-top: 8px; line-height: 1.7; }
+@media (max-width: 767px) { .hero-inquiry-button { margin-left: 0; margin-top: 12px; } }
 
 .feature-strip { background: var(--charcoal); color: var(--white); }
 .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); min-height: 188px; }

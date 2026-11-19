@@ -4,8 +4,8 @@ import SitePreloader from "@/app/components/site-preloader";
 import { withBasePath } from "@/app/components/site-paths";
 import { absoluteSiteUrl, pageMetadata, publicAssetUrl, siteName, siteUrl, socialImage } from "@/app/seo";
 
-const homeTitle = "長芸有限公司｜精密研磨、CNC車削與精密機械零組件";
-const homeDescription = "長芸有限公司位於台中，專注於內外徑精密研磨、CNC車削、精密機械零組件與整合加工，服務工作母機、汽車零件及工業設備需求。";
+const homeTitle = "台中研磨加工與 CNC 車床加工｜長芸有限公司";
+const homeDescription = "長芸位於台中大甲，提供內外徑研磨加工、CNC車床加工與品質檢驗，承接主軸、套筒及精密軸類零件。";
 const organizationId = `${absoluteSiteUrl("/")}#organization`;
 const websiteId = `${absoluteSiteUrl("/")}#website`;
 const preloaderSessionKey = "site-preloader-played";

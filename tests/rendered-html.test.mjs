@@ -3,9 +3,9 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const routes = [
-  ["/", "專注精密研磨", "長芸有限公司｜精密研磨、CNC車削與精密機械零組件"],
+  ["/", "台中大甲", "台中研磨加工與 CNC 車床加工｜長芸有限公司"],
   ["/about", "關於長芸", "關於長芸｜精密機械零組件加工｜長芸有限公司"],
-  ["/services", "從圖面評估到成品", "服務｜精密研磨、CNC車削與整合加工｜長芸有限公司"],
+  ["/services", "從圖面評估到成品", "內外徑研磨加工與 CNC 車床代工｜長芸有限公司"],
   ["/capacity", "讓每一個尺寸", "加工能力｜內外徑研磨與 CNC 車削｜長芸有限公司"],
   ["/equipment", "設備經驗", "設備｜精密研磨與機械加工設備｜長芸有限公司"],
   ["/cases", "熟悉關鍵零件", "產品與實績｜精密機械零組件｜長芸有限公司"],
@@ -63,7 +63,7 @@ test("renders every independent company page", async () => {
       assert.match(html, /加工能力/);
       assert.doesNotMatch(html, /長芸沿革/);
       assert.doesNotMatch(html, /我們的目標|home-next-band|home-mission-block/);
-      assert.match(html, /home-service-card\.png/);
+      assert.match(html, /home-service-card-optimized\.webp/);
       assert.match(html, /home-process-card\.jpg/);
       assert.equal((html.match(/class="home-action-image-link"/g) ?? []).length, 2);
       assert.match(html, /class="home-action-image-link" href="\/services" aria-label="加工服務"/);

@@ -28,13 +28,13 @@ export const copy: Record<Lang, Record<string, string>> = {
   zh: {
     utility: "精密研磨．CNC 車削．品質檢驗",
     heroEyebrow: "CHY / 精密製造",
-    heroTitleLead: "專注",
+    heroTitleLead: "台中大甲",
     heroTitleAccent: "精密研磨",
     heroTitleJoin: "",
-    heroTitleSecond: "成就每一道",
-    heroTitleAccent2: "關鍵精度",
+    heroTitleSecond: "主軸、套筒與",
+    heroTitleAccent2: "精密軸件",
     heroTitleEnd: "",
-    heroBody: "長芸累積多年精密機械零件加工經驗，以穩定的加工技術與嚴謹的品質檢驗，滿足各產業對精度的高度要求。",
+    heroBody: "長芸提供內外徑研磨加工與 CNC 車床加工，可依圖面評估單道研磨，並整合車削、研磨與品質檢驗。",
     heroPrimary: "了解加工能力",
     heroService1: "內外徑精密研磨",
     heroService2: "CNC 車削加工",
@@ -394,15 +394,15 @@ export const services = [
   {
     number: "01",
     image: "/images/precision-grinding.jpg",
-    title: { zh: "精密研磨", ja: "精密研磨", en: "Precision grinding" },
-    body: { zh: "內徑、外徑、端面與圓筒研磨，適用於軸件、套筒與高精度圓形零件。", ja: "内径、外径、端面、円筒研磨に対応します。", en: "ID, OD, surface, and cylindrical grinding for precision round parts." },
+    title: { zh: "內外徑研磨加工", ja: "内外径研削加工", en: "Internal and external grinding" },
+    body: { zh: "提供套筒內孔、軸件外圓及端面研磨。詢價時請提供內孔孔徑與深度、外徑與長度，及圖面上的公差需求。", ja: "スリーブの内径や軸の外径・端面を研削します。内径、深さ、外径、長さと公差を図面でお知らせください。", en: "Grinding for sleeve bores, shaft outer diameters and end faces. Please provide bore diameter and depth, outer diameter, length and drawing tolerances." },
     tags: { zh: "內徑 / 外徑", ja: "内径 / 外径", en: "ID / OD" },
   },
   {
     number: "02",
     image: "/images/cnc-turning.png",
-    title: { zh: "CNC 車削加工", ja: "CNC旋盤加工", en: "CNC turning" },
-    body: { zh: "針對軸、套筒與機械零件，提供打樣、小量與穩定量產加工。", ja: "軸、スリーブ、機械部品の試作から量産まで対応します。", en: "Shafts, sleeves, and custom components for prototypes and repeat production." },
+    title: { zh: "CNC 車床加工", ja: "CNC旋盤加工", en: "CNC turning" },
+    body: { zh: "針對軸、套筒與機械零件提供 CNC 車床加工，依圖評估打樣、小量或量產需求，也可安排後續研磨與檢驗。", ja: "軸、スリーブなどの CNC 旋盤加工を行い、試作から量産、後工程の研削・検査まで図面に基づき対応します。", en: "CNC turning for shafts, sleeves and mechanical parts, from prototypes to production, with subsequent grinding and inspection available." },
     tags: { zh: "V26 / V36", ja: "V26 / V36", en: "V26 / V36" },
   },
   {
@@ -706,7 +706,7 @@ export const aboutTimeline: AboutTimelineItem[] = [
 ];
 
 const aboutGallerySlides = [
-  { src: "/images/about-gallery/7a0bbafa-179d-4bc5-b634-68bfd0fd2911.png", alt: "Precision grinding in production" },
+  { src: "/images/about-gallery/precision-grinding-optimized.webp", alt: "Precision grinding in production" },
   { src: "/images/about-machining-floor.png", alt: "Precision machining floor" },
   { src: "/images/about-exterior-blurred.jpg", alt: "Chung Uen company exterior" },
   { src: "/images/about-factory-wide.png", alt: "Factory machining equipment" },
@@ -721,7 +721,7 @@ export function AboutGallery({ lang }: { lang: Lang }) {
     setActiveIndex((current) => (current + direction + aboutGallerySlides.length) % aboutGallerySlides.length);
   };
 
-  return <div className="about-gallery" aria-label={lang === "zh" ? "公司照片輪播" : lang === "ja" ? "会社写真スライダー" : "Company photo carousel"} aria-roledescription="carousel"><div className="about-gallery-viewport"><figure className="about-gallery-slide"><img src={withBasePath(activeSlide.src)} alt={activeSlide.alt} /></figure></div><div className="about-gallery-controls"><button className="about-gallery-arrow" type="button" aria-label="上一張照片" onClick={() => moveSlide(-1)}><FontAwesomeIcon icon={faArrowLeft} aria-hidden="true" /></button><div className="about-gallery-dots" role="tablist" aria-label="照片選擇">{aboutGallerySlides.map((slide, index) => <button key={slide.src} className={index === activeIndex ? "is-active" : ""} type="button" role="tab" aria-selected={index === activeIndex} aria-label={`顯示第 ${index + 1} 張照片`} onClick={() => setActiveIndex(index)} />)}</div><button className="about-gallery-arrow" type="button" aria-label="下一張照片" onClick={() => moveSlide(1)}><FontAwesomeIcon icon={faArrowRight} aria-hidden="true" /></button></div></div>;
+  return <div className="about-gallery" aria-label={lang === "zh" ? "公司照片輪播" : lang === "ja" ? "会社写真スライダー" : "Company photo carousel"} aria-roledescription="carousel"><div className="about-gallery-viewport"><figure className="about-gallery-slide"><img src={withBasePath(activeSlide.src)} loading="lazy" alt={activeSlide.alt} /></figure></div><div className="about-gallery-controls"><button className="about-gallery-arrow" type="button" aria-label="上一張照片" onClick={() => moveSlide(-1)}><FontAwesomeIcon icon={faArrowLeft} aria-hidden="true" /></button><div className="about-gallery-dots" role="tablist" aria-label="照片選擇">{aboutGallerySlides.map((slide, index) => <button key={slide.src} className={index === activeIndex ? "is-active" : ""} type="button" role="tab" aria-selected={index === activeIndex} aria-label={`顯示第 ${index + 1} 張照片`} onClick={() => setActiveIndex(index)} />)}</div><button className="about-gallery-arrow" type="button" aria-label="下一張照片" onClick={() => moveSlide(1)}><FontAwesomeIcon icon={faArrowRight} aria-hidden="true" /></button></div></div>;
 }
 
 export const text = (value: TextValue, lang: Lang) => value[lang] || value.zh;
@@ -780,11 +780,11 @@ function HomeBusinessSections({ lang }: { lang: Lang }) {
   const content = homeBusinessContent[lang];
   const servicesLabel = text(navItems[1].label, lang);
   const capacityLabel = text(navItems[2].label, lang);
-  return <section className="home-business-section"><div className="container home-business-container"><div className="home-business-block home-actions-block"><div className="home-action-grid"><article className="home-action-card"><a className="home-action-image-link" href={withRoutePath("/services")} aria-label={servicesLabel}><div className="home-action-image"><img src={withBasePath("/images/home-service-card.png")} alt={servicesLabel} /><span className="home-action-overlay"><span>{servicesLabel}</span><span className="button-icon" aria-hidden="true"><FontAwesomeIcon icon={faArrowRight} /></span></span></div></a></article><article className="home-action-card"><a className="home-action-image-link" href={withRoutePath("/capacity")} aria-label={capacityLabel}><div className="home-action-image"><img src={withBasePath("/images/home-process-card.jpg")} alt={capacityLabel} /><span className="home-action-overlay"><span>{capacityLabel}</span><span className="button-icon" aria-hidden="true"><FontAwesomeIcon icon={faArrowRight} /></span></span></div></a></article></div></div></div></section>;
+  return <section className="home-business-section"><div className="container home-business-container"><div className="home-business-block home-actions-block"><div className="home-action-grid"><article className="home-action-card"><a className="home-action-image-link" href={withRoutePath("/services")} aria-label={servicesLabel}><div className="home-action-image"><img src={withBasePath("/images/home-service-card-optimized.webp")} loading="lazy" alt={servicesLabel} /><span className="home-action-overlay"><span>{servicesLabel}</span><span className="button-icon" aria-hidden="true"><FontAwesomeIcon icon={faArrowRight} /></span></span></div></a></article><article className="home-action-card"><a className="home-action-image-link" href={withRoutePath("/capacity")} aria-label={capacityLabel}><div className="home-action-image"><img src={withBasePath("/images/home-process-card.jpg")} alt={capacityLabel} /><span className="home-action-overlay"><span>{capacityLabel}</span><span className="button-icon" aria-hidden="true"><FontAwesomeIcon icon={faArrowRight} /></span></span></div></a></article></div></div></div></section>;
 }
 
 export default function Home() {
   const { lang, setLang } = useSiteLang();
   const c = copy[lang];
-  return <div id="top" className="site-shell" data-site-lang={lang}><HomeHeader lang={lang} setLang={setLang} /><main><section className="hero-section"><div className="hero-media" aria-hidden="true"><img src={withBasePath("/images/hero-component.jpg")} alt="" /></div><div className="hero-scrim" aria-hidden="true" /><div className="container hero-content"><p className="hero-kicker">{c.heroEyebrow}</p><h1>{c.heroTitleLead} <em>{c.heroTitleAccent}</em>{c.heroTitleJoin}<br />{c.heroTitleSecond} <em>{c.heroTitleAccent2}</em>{c.heroTitleEnd}</h1><p className="hero-lede">{c.heroBody}</p><div className="hero-services"><span>{c.heroService1}</span><i /><span>{c.heroService2}</span><i /><span>{c.heroService3}</span></div><a className="hero-button" href={withRoutePath("/capacity")}>{c.heroPrimary} <span className="button-icon" aria-hidden="true"><FontAwesomeIcon icon={faArrowRight} /></span></a></div></section><section className="feature-strip"><div className="container feature-grid">{featureItems.map((item) => <article className="feature-item" key={item.icon}><span className="feature-icon"><FeatureIcon name={item.icon} /></span><h2>{text(item.title, lang)}</h2><p>{text(item.body, lang)}</p></article>)}</div></section><HomeAboutSection lang={lang} /><HomeBusinessSections lang={lang} /></main><HomeFooter lang={lang} /></div>;
+  return <div id="top" className="site-shell" data-site-lang={lang}><HomeHeader lang={lang} setLang={setLang} /><main><section className="hero-section"><div className="hero-media" aria-hidden="true"><img src={withBasePath("/images/hero-component.jpg")} alt="" /></div><div className="hero-scrim" aria-hidden="true" /><div className="container hero-content"><p className="hero-kicker">{c.heroEyebrow}</p><h1>{c.heroTitleLead} <em>{c.heroTitleAccent}</em>{c.heroTitleJoin}<br />{c.heroTitleSecond} <em>{c.heroTitleAccent2}</em>{c.heroTitleEnd}</h1><p className="hero-lede">{c.heroBody}</p><div className="hero-services"><span>{c.heroService1}</span><i /><span>{c.heroService2}</span><i /><span>{c.heroService3}</span></div><a className="hero-button" href={withRoutePath("/capacity")}>{c.heroPrimary} <span className="button-icon" aria-hidden="true"><FontAwesomeIcon icon={faArrowRight} /></span></a><a className="hero-button hero-inquiry-button" href={withRoutePath("/contact")}>{lang === "zh" ? "拿圖詢價" : lang === "ja" ? "図面でお問い合わせ" : "Request a quote"}</a></div></section><section className="feature-strip"><div className="container feature-grid">{featureItems.map((item) => <article className="feature-item" key={item.icon}><span className="feature-icon"><FeatureIcon name={item.icon} /></span><h2>{text(item.title, lang)}</h2><p>{text(item.body, lang)}</p></article>)}</div></section><HomeAboutSection lang={lang} /><HomeBusinessSections lang={lang} /></main><HomeFooter lang={lang} /></div>;
 }
