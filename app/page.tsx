@@ -28,10 +28,10 @@ export const copy: Record<Lang, Record<string, string>> = {
   zh: {
     utility: "精密研磨．CNC 車削．品質檢驗",
     heroEyebrow: "CHY / 精密製造",
-    heroTitleLead: "台中大甲",
+    heroTitleLead: "台中大甲 ",
     heroTitleAccent: "精密研磨",
     heroTitleJoin: "",
-    heroTitleSecond: "主軸、套筒與",
+    heroTitleSecond: "主軸、套筒與 ",
     heroTitleAccent2: "精密軸件",
     heroTitleEnd: "",
     heroBody: "長芸提供內外徑研磨加工與 CNC 車床加工，可依圖面評估單道研磨，並整合車削、研磨與品質檢驗。",
@@ -91,11 +91,11 @@ export const copy: Record<Lang, Record<string, string>> = {
   ja: {
     utility: "精密研磨．CNC旋盤．品質検査",
     heroEyebrow: "CHY / 精密製造",
-    heroTitleLead: "精密研磨に",
-    heroTitleAccent: "集中し",
+    heroTitleLead: "台中市大甲区の",
+    heroTitleAccent: "精密研削",
     heroTitleJoin: "",
-    heroTitleSecond: "重要な精度を",
-    heroTitleAccent2: "実現します",
+    heroTitleSecond: "主軸・スリーブ・",
+    heroTitleAccent2: "精密軸",
     heroTitleEnd: "",
     heroBody: "長芸は精密機械部品の加工経験を積み重ね、安定した加工技術と厳格な品質検査で高精度の要求に応えます。",
     heroPrimary: "加工能力を見る",
@@ -154,11 +154,11 @@ export const copy: Record<Lang, Record<string, string>> = {
   en: {
     utility: "Precision grinding · CNC turning · Quality inspection",
     heroEyebrow: "CHY / PRECISION IN MOTION",
-    heroTitleLead: "Focused on",
-    heroTitleAccent: "precision grinding",
-    heroTitleJoin: "",
-    heroTitleSecond: "Built for every",
-    heroTitleAccent2: "critical tolerance",
+    heroTitleLead: "",
+    heroTitleAccent: "Precision grinding",
+    heroTitleJoin: " in Dajia, Taichung",
+    heroTitleSecond: "Spindles, sleeves, and ",
+    heroTitleAccent2: "precision shafts",
     heroTitleEnd: "",
     heroBody: "Chung Uen brings years of precision machining experience to every part, pairing stable processes with disciplined inspection for demanding industries.",
     heroPrimary: "Explore capabilities",
@@ -786,5 +786,5 @@ function HomeBusinessSections({ lang }: { lang: Lang }) {
 export default function Home() {
   const { lang, setLang } = useSiteLang();
   const c = copy[lang];
-  return <div id="top" className="site-shell" data-site-lang={lang}><HomeHeader lang={lang} setLang={setLang} /><main><section className="hero-section"><div className="hero-media" aria-hidden="true"><img src={withBasePath("/images/hero-component.jpg")} alt="" /></div><div className="hero-scrim" aria-hidden="true" /><div className="container hero-content"><p className="hero-kicker">{c.heroEyebrow}</p><h1>{c.heroTitleLead} <em>{c.heroTitleAccent}</em>{c.heroTitleJoin}<br />{c.heroTitleSecond} <em>{c.heroTitleAccent2}</em>{c.heroTitleEnd}</h1><p className="hero-lede">{c.heroBody}</p><div className="hero-services"><span>{c.heroService1}</span><i /><span>{c.heroService2}</span><i /><span>{c.heroService3}</span></div><a className="hero-button" href={withRoutePath("/capacity")}>{c.heroPrimary} <span className="button-icon" aria-hidden="true"><FontAwesomeIcon icon={faArrowRight} /></span></a><a className="hero-button hero-inquiry-button" href={withRoutePath("/contact")}>{lang === "zh" ? "拿圖詢價" : lang === "ja" ? "図面でお問い合わせ" : "Request a quote"}</a></div></section><section className="feature-strip"><div className="container feature-grid">{featureItems.map((item) => <article className="feature-item" key={item.icon}><span className="feature-icon"><FeatureIcon name={item.icon} /></span><h2>{text(item.title, lang)}</h2><p>{text(item.body, lang)}</p></article>)}</div></section><HomeAboutSection lang={lang} /><HomeBusinessSections lang={lang} /></main><HomeFooter lang={lang} /></div>;
+  return <div id="top" className="site-shell" data-site-lang={lang}><HomeHeader lang={lang} setLang={setLang} /><main><section className="hero-section"><div className="hero-media" aria-hidden="true"><img src={withBasePath("/images/hero-component.jpg")} alt="" /></div><div className="hero-scrim" aria-hidden="true" /><div className="container hero-content"><p className="hero-kicker">{c.heroEyebrow}</p><h1>{c.heroTitleLead}<em>{c.heroTitleAccent}</em>{c.heroTitleJoin}<br />{c.heroTitleSecond}<em>{c.heroTitleAccent2}</em>{c.heroTitleEnd}</h1><p className="hero-lede">{c.heroBody}</p><div className="hero-services"><span>{c.heroService1}</span><i /><span>{c.heroService2}</span><i /><span>{c.heroService3}</span></div><a className="hero-button" href={withRoutePath("/capacity")}>{c.heroPrimary} <span className="button-icon" aria-hidden="true"><FontAwesomeIcon icon={faArrowRight} /></span></a><a className="hero-button hero-inquiry-button" href={withRoutePath("/contact")}>{lang === "zh" ? "拿圖詢價" : lang === "ja" ? "図面でお問い合わせ" : "Request a quote"}</a></div></section><section className="feature-strip"><div className="container feature-grid">{featureItems.map((item) => <article className="feature-item" key={item.icon}><span className="feature-icon"><FeatureIcon name={item.icon} /></span><h2>{text(item.title, lang)}</h2><p>{text(item.body, lang)}</p></article>)}</div></section><HomeAboutSection lang={lang} /><HomeBusinessSections lang={lang} /></main><HomeFooter lang={lang} /></div>;
 }
